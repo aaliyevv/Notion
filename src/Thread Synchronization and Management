@@ -1,0 +1,70 @@
+# Thread Synchronization and Management
+
+- `synchronized`
+
+    In a multi-threaded environment, synchronization is used to ensure that only one thread can access shared resources at a time. There are two main ways to achieve synchronization in Java:
+
+    - `synchronized` methods
+
+        ![image.png](attachment:886543bc-294a-4c3d-8f80-e031f8498afa:image.png)
+
+        Since the `increment()` method is `synchronized`  when a thread accesses this method, it acquires the lock on the `counter` object. When another thread wants to access the same method, it has to wait until the first thread finishes its work and releases the lock. This completely eliminates the "race condition" problem.
+
+    - `synchronized` blocks
+
+        Sometimes it is necessary to synchronize not the entire method, but only a specific part of it (the critical section). This is more efficient because the lock is only held for the short period of time necessary.
+
+        ![image.png](attachment:a01206f4-8193-4795-b851-41eb32e6d803:image.png)
+
+- Inter-Thread Communication
+
+    These methods must be called within a `synchronized` block or method.
+
+    When the data is ready, the Producer(thread1) must "wake up" the Consumer(thread2).
+
+    - `wait()`
+
+        The thread that calls the method releases the lock it holds and goes into a wait state for that object. It remains "sleeping" until another thread calls `notify()` or `notifyAll()` on the same object.
+
+    - `notify()`
+
+        It wakes up only one of the threads waiting for that object. Which thread to wake up is determined by the JVM.
+
+    - `notifyAll()`
+
+        Wakes up all threads waiting for that object.
+
+    - Example
+
+        ![image.png](attachment:552c07b6-3ea8-4d0e-8922-67391bf814d4:image.png)
+
+- Managing Threads:
+    - `join()`
+
+        The j`join()` method is used to make a thread wait for another thread to finish its work. When `threadA.join()` is called, the current thread suspends its execution until `threadA`'s work is completely finished.
+
+        ![image.png](attachment:1fcfadb1-a6d3-4559-893e-67321d8710df:image.png)
+
+
+    - `interrupt()`
+
+        The `interrupt()` method does not forcefully stop the thread, it simply sets its "interrupted status" (`interrupted flag`) to `true`. The thread itself should check this status and politely stop its work.
+
+        - If a thread is inside a blocking method such as sleep(), wait(), or join(), that thread will wake up with an InterruptedException error as soon as interrupt() is called.
+        - If a thread is actively running, it should periodically check whether it has been interrupted by calling the `Thread.currentThread().isInterrupted()` method.
+
+        ![image.png](attachment:a7e97e66-6c05-4c53-a295-b89b69d75f98:image.png)
+
+- Deadlock
+
+    It is a situation where two or more threads wait for each other infinitely.
+
+- **`volatile` keyword**
+
+    Any changes made to a variable marked with this keyword are immediately visible to all other threads.
+
+- **`java.util.concurrent` packet**
+    - Locking mechanisms such as ReentrantLock, which are more flexible than synchronized.
+    - A framework that simplifies the creation and management of threads, allowing you to create thread pools.
+    - Thread-safe collections like `ConcurrentHashMap`.
+    - Classes that perform atomic (indivisible) operations on variables, such as `AtomicInteger`.
