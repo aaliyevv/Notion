@@ -1,0 +1,44 @@
+# String, String Builder, String Buffer
+
+- `String` class
+    - Main Feature:
+
+        Immutability. It means, the value of an object cannot be changed after it is created.
+
+        ![image.png](attachment:34be6977-4ae4-44e1-bf29-cb2f5cff0a20:image.png)
+
+    - Creating a `String` Object
+        - `String s1 = "Salam";`
+
+            Java stores this value in String Constant Pool (SCP) to save memory. If a new string with the same value is created, Java uses the existing object in the SCP instead of creating a new object.
+
+        - `String s2 = new String("Salam");`
+
+            This method always creates a new object in Heap memory, even if an object with the same value already exists in SCP.
+
+    - Concatenation Problem
+
+        Every concatenation(for loop) process creates a new object in memory.
+
+- `StringBuilder` class
+    - Main Feature
+        1. Mutable, can change value. A new object is not created, an operation is performed on an existing object.
+        2. Not Thread-Safe, not synchronized. Good for single-threaded
+        3. Best choice for creating a string in a loop
+    - Main methods
+
+        ![image.png](attachment:1a6b7749-0598-42de-a8af-bfacf5cbdc06:image.png)
+
+- `StringBuffer` class
+    1. Mutable.
+    2. Main difference between `StringBuilder` is thread-safe, synchronized. Best choice in a multi-threaded environment.
+    3. Its performance is lower than `StringBuilder` because synchronization creates additional overhead.
+
+- Comparison Table
+
+    ![image.png](attachment:99153a11-25ce-4b60-bfff-392c44108015:image.png)
+
+- Which One Should We Choose When?
+    - `String`:  If the value of the string will not change after it is created.
+    - **`StringBuilder`:** If you need to change strings frequently in a single-threaded program, it is the fastest and most efficient option.
+    - **`StringBuffer`:** If you need to modify shared strings in a multithreaded program and safety between threads is important, use this class.
