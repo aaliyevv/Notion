@@ -1,8 +1,8 @@
 # Enum, Wrapper Class, Autoboxing and Unboxing
 
-Wrapper(boxing) varsa, biri reference digeri primitiv tipli olur , casting sadece tipi deyisdirir, parsing stringden deyisende istifade olunur.
+Wrapper(boxing) varsa, biri reference digeri primitiv tipli olur, casting sadece tipi deyisdirir eyni aile daxilinde (meselen: int, double, float), parsing muxtelif aile daxilinde (stringden deyisende) istifade olunur.
 
-- `Enum`
+- `Enum` (Enumeration)
 
     a special data type in Java that is used to define a group of constant (immutable) values (days of the week). `Enum` provides Type Safety, Readability of the code.
 
@@ -21,3 +21,39 @@ Wrapper(boxing) varsa, biri reference digeri primitiv tipli olur , casting sadec
     - Usage of methods
 
         ![image.png](attachment:23b2d625-cb16-425d-8799-013442ebddfb:image.png)
+
+- `Wrapper` class
+
+    Special classes that "wrap" primitive data types into objects. Each primitive type has own `Wrapper` class.
+
+    - Example
+
+        ![image.png](attachment:27f04051-1413-48e9-9cc3-bea9481e8b71:image.png)
+
+- Why we need `Wrapper` ?
+    1. Java Collection Framework (`ArrayList`, `HashMap` etc.) only works with objects. To store primitive types in these collections, they need to be converted to Wrapper classes.
+        - Example
+
+            ![image.png](attachment:67377b74-023b-4f14-bd59-984bb80104d4:image.png)
+
+    2. Primitive types can not take a null value (`int a = null;` will give an error). Since wrapper classes are objects, they can take a null value.
+    3. Utility Methods: `Wrapper` classes provide various utility(useful) methods. For instance, the Integer.parseInt("123") method converts a String to an int.
+- Autoboxing
+
+    Autoboxing is the automatic conversion of a primitive type into its corresponding Wrapper class. The compiler does this for us behind the scenes.
+
+    - Example
+
+        ![image.png](attachment:c9fbb8e3-7976-4946-8205-1bc0084371a3:image.png)
+
+- Unboxing
+
+    Automatic conversion of a Wrapper class object into the corresponding primitive type.
+
+    - Example
+
+        ![image.png](attachment:fddd3516-13f9-4b53-9e4c-1e31bb9d66cf:image.png)
+
+- Example
+
+    ![image.png](attachment:5fcd79ad-9a71-469c-8f90-e8e12aec46a5:image.png)
