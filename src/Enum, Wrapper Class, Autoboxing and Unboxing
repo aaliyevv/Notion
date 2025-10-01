@@ -1,0 +1,23 @@
+# Enum, Wrapper Class, Autoboxing and Unboxing
+
+Wrapper(boxing) varsa, biri reference digeri primitiv tipli olur , casting sadece tipi deyisdirir, parsing stringden deyisende istifade olunur.
+
+- `Enum`
+
+    a special data type in Java that is used to define a group of constant (immutable) values (days of the week). `Enum` provides Type Safety, Readability of the code.
+
+- Create `Enum`
+
+    public enum WeekDay {}. Values are written in uppercase letters separated by commas. Enum values are referenced using a dot (.).
+
+    - Usage of `Enum`
+
+        ![image.png](attachment:5ae4274a-4ad2-488b-99cf-8be20c870000:image.png)
+
+- Methods of `Enum`
+    - **`values()`**: Return all values of `Enum` as an array.
+    - **`valueOf(String name)`**: Returns the `enum` constant  corresponding to the given `String` name. This method is not there to call enums in code, but to convert strings from external sources to enums.
+    - **`ordinal()`**: Returns the order of the constant  within `enum` (index, start from 0).
+    - Usage of methods
+
+        ![image.png](attachment:23b2d625-cb16-425d-8799-013442ebddfb:image.png)
