@@ -1,6 +1,12 @@
 # Enum, Wrapper Class, Autoboxing and Unboxing
 
-Wrapper(boxing) varsa, biri reference digeri primitiv tipli olur, casting sadece tipi deyisdirir eyni aile daxilinde (meselen: int, double, float), parsing muxtelif aile daxilinde (stringden deyisende) istifade olunur.
+- Specific Notes
+
+    If there is a `Wrapper` (boxing), one is a reference, the other is a primitive type.
+
+    Casting only changes the type within the same family (for example: int, double, float).
+
+    Parsing is used within a different family (when changing from a string).
 
 - `Enum` (Enumeration)
 
@@ -57,3 +63,13 @@ Wrapper(boxing) varsa, biri reference digeri primitiv tipli olur, casting sadece
 - Example
 
     ![image.png](attachment:5fcd79ad-9a71-469c-8f90-e8e12aec46a5:image.png)
+
+- `NullPointerException`
+
+    If the value of the Wrapper object is null, a NullPointerException error will occur when trying to unbox it to a primitive type.
+
+    ```jsx
+    Integer myNumber = null;
+    int num = myNumber; // Bu sətir NullPointerException xətası verəcək,
+    // çünki null dəyərini int-ə çevirmək mümkün deyil.
+    ```
