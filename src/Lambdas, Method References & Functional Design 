@@ -1,0 +1,45 @@
+# **Lambdas, Method References & Functional Design**
+
+- Functional Programming
+    - **Readability:** Code becomes shorter and more purposeful.
+    - **Parallelism: It can easily use multi-core processors in the background.**
+- Functional Interfaces
+
+    An interface that has only one **abstract** method. This makes it clear which method the lambda expression implements. Java introduces the `@FunctionalInterface` annotation to prevent accidentally adding a second abstract method to an interface.
+
+    - Example
+
+        ![image.png](attachment:bfe452a6-a61c-4ed8-8897-8715fc4c5646:image.png)
+
+- Template functional interfaces:
+    - `Predicate<T>`
+
+        It accepts an object and returns a boolean (true/false). (For example, x > 10).
+
+    - `Function<T, R>`
+
+        It accepts an object (T) and returns a different object (R). (For example, converting a String to an Integer).
+
+    - `Consumer<T>`
+
+        It accepts an object and returns nothing (`void`). (For example, `System.out.println()`).
+
+    - `Supplier<T>`
+
+        It doesn't accept anything, but returns an object. (For example, creating a new object).
+
+- The Evolution of Lambda Syntax
+
+    ![image.png](attachment:fe998c62-9f5b-4393-aec1-3dfef5070d12:image.png)
+
+    Java knows list is String, can also guess name.
+
+    ![image.png](attachment:ef54feab-7fab-434f-b481-839f1572ab6d:image.png)
+
+    Only one parameter, can also throw(omit) the parentheses.
+
+    ![image.png](attachment:2a13b24e-48c8-48ee-817a-432adebb7036:image.png)
+
+    Body of the method consists of only one statement, we can also omit the curly braces {}.
+
+    ![image.png](attachment:83ca5e07-24cf-4883-b12d-2757d65ed980:image.png)
