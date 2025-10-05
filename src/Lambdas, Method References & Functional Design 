@@ -43,3 +43,35 @@
     Body of the method consists of only one statement, we can also omit the curly braces {}.
 
     ![image.png](attachment:83ca5e07-24cf-4883-b12d-2757d65ed980:image.png)
+
+- Method References
+
+    Syntax: `Object/Class:: MethodName`
+
+    - Static method reference: `ClassName::staticMethodName`
+
+        ![image.png](attachment:2385b799-03d1-4492-b14e-f9024c56e3c2:image.png)
+
+    - Reference to an object's instance method: `objectReference::instanceMethodName` Java
+
+        ![image.png](attachment:af429a3a-6aff-42eb-9065-585271381808:image.png)
+
+    - The first parameter is the object that is calling the method.
+
+        ![image.png](attachment:3001b487-553a-4446-88d9-c8155c6630e5:image.png)
+
+    - Constructor reference: `ClassName::new` Java
+
+        ![image.png](attachment:1f8e308d-7ba2-4633-8178-fcfbbf17a6c4:image.png)
+
+- Functional Solution (with Stream API and Lambda)
+
+    ![image.png](attachment:f59d74f3-0681-4012-bfd0-f9ec18987207:image.png)
+
+- Comparison
+
+    **Functional code:**  shorter and clearly states (express) "what it does": "filter, map (köçür), collect".
+
+    **Imperative code (**with a traditional **`for`** loop**):** on the other hand, explains "how it does it" step by step: "create a new list, start a loop, check the condition, calculate, add to the list...".
+
+    The functional approach can be easily parallelized. Just write .parallelStream() instead of .stream().
