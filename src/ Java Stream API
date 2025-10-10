@@ -1,1 +1,131 @@
- Java Stream API
+# Java Stream API
+
+- Stream API
+    
+    It is an interface used to perform functional-style operations on a sequence of elements. It does not store data, it only processes the data coming from the source and produces a result.
+    
+- Advantages
+    - Declarative Code: You state what you want to do, not how it will be done.
+    - Parallelization: To make efficient use of multi-core processors.
+    - "Lazy" Evaluation: Intermediate operations are only executed when the terminal operation is called. This optimizes performance.
+    - Internal Iteration: The Stream API itself handles iterating through elements (e.g., a `for` loop).
+- Stream Pipeline
+    
+    This pipeline consists of three main parts:
+    
+    1. **Source: This can be** collection (`List`, `Set`), an array or an I/O channel.
+    2. **Intermediate Operations:** Operations that transform a stream from a source and return a new stream as a result. These operations can be written in a chain (`filter().map().sorted()`). They work "lazy". 
+    3. **Terminal Operation:** The final operation that starts the Pipeline and produces the final result. Only one terminal operation can be called on a stream.
+    
+    Structure:
+    
+    `source.intermediateOperation1().intermediateOperation2().terminalOperation()`
+    
+- Create Stream (Source)
+    - From collection
+    - From Array
+    - **With `Stream.of()`**
+    - For primitive type
+- Intermediate Operations
+    - `filter(Predicate<T> predicate)` - selects those that meet the condition
+        - Example
+            
+            ![image.png](attachment:feee76a2-1d5c-476d-922d-6339cf6da905:image.png)
+            
+    - `map(Function<T, R> mapper)` - adapts to the condition
+        
+        (.map(String::toUpperCase) // converts each name to uppercase)
+        
+    - `sorted()` - puts in order
+    - `distinct()` - removes duplicates
+    - `limit(long maxSize)` və `skip(long n)`
+        
+        `limit()` - limits the Stream to the first `maxSize` element.
+        
+        `skip()` - skip the first n elements.
+        
+        - Example:
+            
+            ![image.png](attachment:bf21eccd-bd86-4c85-bc35-80e4aa2143b1:image.png)
+            
+- Terminal Operations
+    - `forEach(Consumer<T> action)`
+        
+        Performs the given operation on each element.
+        
+    - `collect(Collector collector)`
+        
+        Collects the elements of a Stream into a container (e.g. List, Set, Map)
+        
+    - `reduce(T identity, BinaryOperator<T> accumulator)`
+        
+        Reduces the elements of a Stream to a single result. Identity is a default number.
+        
+        - Example:
+            
+            ![image.png](attachment:aa2c7657-9fe5-41f6-b769-bdc33b566f68:image.png)
+            
+    - `count()`
+        
+        Return the number of elements of stream.
+        
+    - **Matching operations (return** `boolean`**)**
+        - `anyMatch(Predicate p)` Returns `true` at least one element matches the condition
+        - `allMatch(Predicate p)` all elements
+        - `noneMatch(Predicate p)` none of them
+    - **Finding operations**
+        - `findFirst()`
+        - `findAny()` (more efficient in parallel streams)
+- `Collectors`
+    
+    Use with the `collect()` method.
+    
+    Collect to List, Set, Map:
+    
+    - `Collectors.toList()`
+    - `Collectors.toSet()`
+    - `Collectors.toMap(keyMapper, valueMapper)`
+    - `groupingBy()`
+        
+        Groups the elements according to a specific property and returns the result as a `Map`.
+        
+        - Example:
+            
+            ![image.png](attachment:092412db-3179-42f1-a0a7-de9e28f6b1b8:image.png)
+            
+        
+    - `joining()`
+        
+        Combines a stream of strings into a single string.
+        
+- Statistical Calculations
+    
+    `Collectors.summingInt()`, `Collectors.averagingDouble()`, `Collectors.summarizingInt()`
+    
+- Parallel Streams
+    
+    Devide the work of the stream between cores (divides the work between several threads).
+    
+    - `collection.parallelStream()`
+    - `stream.parallel()`
+    - Example:
+        
+        ![image.png](attachment:ef85dba4-ebaa-443f-bc69-0e8be2ea5e8f:image.png)
+        
+    
+    Parallel streams are not always faster. For small data sets or I/O-bound operations, the cost of creating and managing threads may outweigh the benefits.
+    
+- Performance Optimization
+    - Order of Operations: The order of operations can seriously affect performance. Always perform the operations that reduce the size of the stream the fastest (e.g., filter, distinct, limit) first.
+        - Example:
+            
+            ![image.png](attachment:93303fa5-9169-4974-8c77-4b3b3cac33df:image.png)
+            
+    - Using Primitive Streams: When working with primitive types like int, long, double, use IntStream instead of Stream<Integer>. This improves performance by avoiding unnecessary boxing (converting a primitive to an object) and unboxing (converting an object to a primitive).
+    - "Lazy" Execution: Remember that intermediate operations are only executed when the terminal operation is called. This avoids unnecessary calculations.
+    
+- Conclusion
+    
+    The following example combines many of the concepts we've learned. We have a list of Person objects, and we want to group people over 30 years old with unique names by department and calculate the average salary in each department.
+    
+    ![image.png](attachment:eef95813-7b74-446c-aa48-ace12ce32a67:image.png)
