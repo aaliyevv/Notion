@@ -1,1 +1,86 @@
 # Design Patterns
+
+- Design Patterns
+
+    Typical solutions to common problems in software design.
+    Book -  **Design Patterns: Elements of Reusable Object-Oriented Software"**
+
+    Authors - **Gang of Four (GoF)**
+
+- Why it is necessary?
+    - Proven Solutions
+    - Reusability of Code
+    - Readability
+
+        It creates a common "language" among programmers. When a programmer sees a "Singleton" or "Factory" in code, they immediately understand the logic behind it.
+
+    - Extensibility
+- 3 Main categories of Design Pattern
+    - Creational patterns (Singleton, Factory Method)
+    - Structural patterns (Adapter)
+    - Behavioral Patterns (Observer)
+- Creational patterns
+
+    These patterns provide various object creation mechanisms which increase reuse of existing code. For instance, Singleton, Factory Method, Abstract Factory, Builder, Prototype. Ideal for database connection, logging or configuration.
+
+    - Singleton
+
+        Ensuring that there is only one instance (object) of a class (`private` constructor) and providing a global entry point to that instance (`static` instance). There is a `public static` method (`getInstance()`) that returns that instance. This method creates the instance if it hasn't already been created, otherwise it returns the existing one.
+
+        - Example
+
+            ![image.png](attachment:4e43ca05-7d46-4fcf-9c90-e4b8a219299b:image.png)
+
+            ![image.png](attachment:b144f29a-c172-4279-a496-c568a4cd4ca7:image.png)
+
+    - Factory Method
+
+        Defining an interface for creating an object, but leaving the decision of which class to create an object from to subclasses.
+
+        - Structure
+            1. A general interface or abstract class is created for the Product.
+            2. Concrete Product classes are created that implement this interface.
+            3. An abstract class is created for the "Factory" (Creator/Factory) that creates the product. This class has an abstract "factory method" that creates the object (`createProduct()`).
+            4. A concrete factory (Concrete Creator) class is created for each concrete product, and this class creates the corresponding product by implementing the factory method.
+        - Example
+
+            ![image.png](attachment:e4395e22-9c12-4d4b-9ac1-6aee05b72d88:image.png)
+
+            ![image.png](attachment:7e09a4ba-26f5-4dab-a74b-337fae877635:image.png)
+
+- Structural patterns
+
+    It allows classes with different interfaces to work together or adds new functionality to objects.  For instance, Adapter, Decorator, Facade, Proxy, Composite, Bridge.
+
+    - Adapter
+
+        To ensure that classes with incompatible interfaces work together. This "adapts" an existing class to a different interface without changing it.
+
+        - Structure
+            1. **Target**: The interface used by the client.
+            2. **Adaptee**: An existing class with a different interface that needs to be adapted.
+            3. **Adapter**: Implements the `Target` interface and stores an `Adaptee` object inside. It redirects client calls to the `Adaptee`s` methods.
+        - Example
+
+            ![image.png](attachment:a5b164f2-538a-4932-80c2-df9f3684e3b5:image.png)
+
+            ![image.png](attachment:08458ae2-2c99-4f9a-8bdf-fc93685a5dad:image.png)
+
+- Behavioral Patterns
+
+    They determine how objects will connect and interact with each other. For instance, Observer, Strategy, Command, Iterator, State, Template Method.
+
+    - Observer
+
+        Create a one-to-many dependency between objects. When the state of one object ("Subject" or "Publisher") changes, all objects that depend on it ("Observers" or "Subscribers") are automatically notified and updated.
+
+        - Structure
+            1. **Subject (Publisher)**: Maintains a list of Observers and provides methods to add and remove them. It calls the `notifyObservers()` method when its state changes.
+            2. **Observer (Subscriber)**: An interface with a method called `update()`. This method is called when a notification is received from a Subject.
+            3. **Concrete Subject**: Implements the Subject interface and sends notifications to observers when the state changes.
+            4. **Concrete Observer**: Implements the Observer interface and responds appropriately when it receives a notification.
+        - Example
+
+            ![image.png](attachment:9b025bdc-9d3f-4f3f-ae53-304a8fde14e6:image.png)
+
+            ![image.png](attachment:0eba3993-22e8-4cdc-a34d-14165f70c5e9:image.png)
