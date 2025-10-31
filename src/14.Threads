@@ -1,0 +1,28 @@
+- General knowledge
+    - A process is a program, and a thread is a task within a program.
+    - Concurrency is the rapid switching between tasks, while Parallelism is the simultaneous execution of tasks.
+    - In Java we can create thread with `implements Runnable` and `Runnable with Lambda`.
+    - We must call **`start()`** method in order to start the new thread.
+    - Multiple directions changing the same information can lead to a serious problem called a Race Condition.
+- Process and Thread
+
+    A process is an independent execution environment that encapsulates a running program(like restaurant).
+
+    A thread is a lightweight unit of execution that exists within a process. There can be multiple threads within a process, and they share the process's resources (memory, files) among themselves. This shared memory allows for efficient communication between threads. Let’s say each  waiter (thread) serves different tables (process) using the same kitchen (memory).
+
+    In short: A process is a program itself, while threads are separate tasks that are executed simultaneously within that program.
+
+- Concurrency and Parallelism
+
+    Concurrency: The management of multiple tasks on a single-core processor. Processor switches between tasks quickly that seems to us they are happening simultaneously.
+
+    Parallelism: A multi-core processor is one that actually executes multiple tasks at the same time. Each task runs on a separate core.
+
+- Why we need?
+
+
+    1. Preventing UI "Freezes": For example, you are loading a large file in an application. Without multithreading, the application's buttons will not work until the file is loaded, meaning the application will "freeze." While another thread loads the file in the background, the main thread continues to interact with the user.
+
+    1. Maximum Utilization(usage) of Processor Resources: Modern processors have multiple cores. Thanks to multi-core, we can make our programs faster by using all of these cores.
+
+    1. Enhance Performance: Increasing Performance: Some complex calculations or tasks can be divided into multiple directions to significantly reduce the overall execution time.
