@@ -1,3 +1,5 @@
+# #14 Threads
+
 - General knowledge
     - A process is a program, and a thread is a task within a program.
     - Concurrency is the rapid switching between tasks, while Parallelism is the simultaneous execution of tasks.
@@ -26,3 +28,37 @@
     1. Maximum Utilization(usage) of Processor Resources: Modern processors have multiple cores. Thanks to multi-core, we can make our programs faster by using all of these cores.
 
     1. Enhance Performance: Increasing Performance: Some complex calculations or tasks can be divided into multiple directions to significantly reduce the overall execution time.
+
+- Thread Lifecycle
+
+    `Thread myThread = new Thread();` → `start`**(RUNNABLE)** → **RUNNING** → **BLOCKED/WAITING → TERMINATED**
+
+    **BLOCKED/WAITING - maybe waiting for another thread to finish its work or reading the data from file.**
+
+- Create Thread`implements Runnable`
+
+
+    ![image.png](attachment:a8098a5f-b5a3-4339-9149-866a055052c5:image.png)
+
+    ![image.png](attachment:c743e58e-0830-4de8-9b3c-90f70a0768f4:image.png)
+
+- Create Thread `Runnable with Lambda`
+
+
+    ![image.png](attachment:160ce9fc-b1b3-45aa-8bd9-0ee6b385490d:image.png)
+
+- **`start()`** vs **`run()`**
+    - `thread.start()`: Create new thread and inside this thread calls `run()` method.
+    - `thread.run()`: Not create a new thread. Just in current (main) thread call the  `run()` method as a simple method. Parallelism does not occur.
+- Race Condition
+
+
+    ![image.png](attachment:0ca05394-79b0-4cd8-a584-c98671b2a374:image.png)
+
+    Every time we will get for instance, 178 453, 191 234 but never 200 000. Because `say++`  operation is not atomar, it consists of 3 steps in the background.
+
+    1. Read the value of `say`
+    2. Increase the read value
+    3. Return the new value
+
+    Problem occurs when one thread perform the first step before performing the third step, the processor switches to the other thread. This leads to data loss, we can bring example from ATM. The solution of this issue names ***synchronization***.
