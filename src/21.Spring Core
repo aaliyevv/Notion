@@ -1,0 +1,31 @@
+- **Spring Framework**
+
+    Open-source framework, its main goal is to simplify the development of complex business applications. At the center of Spring is the Spring Core module.
+
+- **IOC** (**Inversion of Control**)
+
+    Transfer of control to Spring. In traditional programming, the creation of objects and their lifecycle are under the direct control of the programmer. That is, when you need an object, you create it yourself using the `new` keyword. IoC reverses this process. It takes the responsibility of creating and managing objects away from the programmer and hands them over to the Spring Container (also called the IoC Container or `ApplicationContext`). You simply declare which objects you need, and Spring creates, configures, and binds them together for you.
+
+- **Dependency**
+
+    When a class needs an object of another class to perform its function.
+
+- **Dependency Injection (DI)**
+
+    Spring place the right thing in the right place. Dependency Injection is a design pattern used to implement the IoC principle. If an object (object `A` has a dependency on another object (object `B`), this dependency is provided externally, i.e. by the Spring Container. Object `A` does not create object `B` itself, it is "injected" into it.
+
+- **Three main types of DI**
+    1. **Constructor Injection**
+    2. **Setter  Injection**
+    3. **Field Injection**
+- **Constructor Injection**
+
+    Dependencies are passed through the class's constructor. This is the most recommended method because it requires that all necessary dependencies be provided for the object to be created.
+
+- **Setter  Injection**
+
+    Dependencies are injected through the setter methods of a class. This method is useful when dependencies are optional.
+
+- **Field Injection**
+
+    Dependencies are injected directly into the fields of the class (with the `@Autowired` annotation). Although it makes the code shorter, it is not recommended for widespread use as it reduces testability.
