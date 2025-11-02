@@ -1,10 +1,14 @@
 - **Spring Framework**
 
-    Open-source framework, its main goal is to simplify the development of complex business applications. At the center of Spring is the Spring Core module.
+    Open-source framework, its main goal is to simplify the development of complex business applications. Spring Core is the heart of the Spring Framework and is based on the principles of IoC and DI.
 
 - **IOC** (**Inversion of Control**)
 
-    Transfer of control to Spring. In traditional programming, the creation of objects and their lifecycle are under the direct control of the programmer. That is, when you need an object, you create it yourself using the `new` keyword. IoC reverses this process. It takes the responsibility of creating and managing objects away from the programmer and hands them over to the Spring Container (also called the IoC Container or `ApplicationContext`). You simply declare which objects you need, and Spring creates, configures, and binds them together for you.
+    Transfer of control to Spring. In traditional programming, the creation of objects and their lifecycle are under the direct control of the programmer. That is, when you need an object, you create it yourself using the `new` keyword. IoC reverses this process. It takes the responsibility of creating and managing objects away from the programmer and hands them over to the Spring Container (also called the IoC Container or `ApplicationContext`). You simply declare which objects you need, and Spring creates, configures, and connects them to each other for you.
+
+- **Bean**
+
+    An object managed by the Spring IoC Container.
 
 - **Dependency**
 
@@ -12,12 +16,13 @@
 
 - **Dependency Injection (DI)**
 
-    Spring place the right thing in the right place. Dependency Injection is a design pattern used to implement the IoC principle. If an object (object `A` has a dependency on another object (object `B`), this dependency is provided externally, i.e. by the Spring Container. Object `A` does not create object `B` itself, it is "injected" into it.
+    Dependency Injection is a design pattern used to implement the IoC principle. If an object (object `A`) has a dependency on another object (object `B`), this dependency is provided externally, i.e. by the Spring Container. Object `A` does not create object `B` itself, it is "injected" into it.
 
 - **Three main types of DI**
     1. **Constructor Injection**
     2. **Setter  Injection**
     3. **Field Injection**
+
 - **Constructor Injection**
 
     Dependencies are passed through the class's constructor. This is the most recommended method because it requires that all necessary dependencies be provided for the object to be created.
@@ -29,3 +34,50 @@
 - **Field Injection**
 
     Dependencies are injected directly into the fields of the class (with the `@Autowired` annotation). Although it makes the code shorter, it is not recommended for widespread use as it reduces testability.
+
+- **Project Build (Maven)**
+    - Add the following dependency to the `pom.xml` file:
+
+        ![image.png](attachment:ac4cb3a7-1128-41ec-acf7-4450a9563e34:image.png)
+
+    - **Create POJO (Simple java classes):**
+
+        First, let's create two simple classes that depend on each other. `MessageService` will hold the message sending logic, and `NotificationService` will use it.
+
+        ![image.png](attachment:286bd93b-77bf-4b05-b2ac-2c9b23ae4a24:image.png)
+
+        ![image.png](attachment:c1026062-f3dc-4d99-9261-72c8895a06f8:image.png)
+
+    - Create Spring Configuration Class
+
+        We create a configuration class to tell Spring which packages to look for components in.
+
+        ![image.png](attachment:c73d4983-1379-4685-8963-89326ba78ec7:image.png)
+
+    - Launching the Application
+
+        Now let's start the Spring Container and get the `NotificationService` object (Bean) from it.
+
+        ![image.png](attachment:12c8c26d-ba6c-4d14-a786-d1f49badee40:image.png)
+
+    - Result
+
+        When you run the program, you will see the following output in the console:
+
+        `Preparing notification... Sending message: Welcome to Spring Core!`
+
+        As you can see, we didn't write `new MessageService()` or `new NotificationService()` anywhere. The Spring Container scanned for classes annotated `@Component`, created their objects (beans), and injected the `MessageService` object into the `NotificationService` constructor via `@Autowired`. This is the power of IoC and DI.
+
+- Main Annotations
+    - **`@Component`**: Marks the class as a generic Spring component (Bean).
+    - **`@Service`**: A special type of `@Component`, used for classes that store business logic.
+    - **`@Repository`**: A special type of `@Component`, used for classes that work with databases (DAO).
+    - **`@Controller`**: A special type of `@Component`, used for classes that handle web requests in Spring MVC.
+    - **`@Autowired`**: Used to inject dependencies automatically (on constructor, setter or field).
+    - **`@Configuration`**: Indicates that a class contains Bean definitions.
+    - **`@Bean`**: Indicates that a method within the `@Configuration` class returns a Bean to be managed by the Spring Container.
+    - **`@ComponentScan`**: Specifies the base package(s) for Spring to search for components (`@Component`, `@Service`, etc.).
+
+- **Annotation-based configuration**
+    
+     Such as (`@Component`, `@Autowired`, `@Configuration`) is a modern and popular way to configure Spring applications.
