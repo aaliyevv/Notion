@@ -1,0 +1,148 @@
+# #21.1 Spring Boot
+
+- Spring Boot
+
+    is a framework for quickly building REST APIs and backend systems with Java. It automates a lot of things: dependency injection, configuration, data layer, etc.
+
+    Spring Boot projects are built on a **layered architecture**. This approach makes the code **modular**, **readable**, and **maintainable**. Each layer has its own responsibilities, and the layers communicate with each other in a sequential manner.
+
+- **⚙️ Interlayer Communication**
+
+    [Client / Frontend]
+    ↓
+    Controller  →  Service  →  Repository  →  Database
+
+    - **The flow is as follows:**
+
+        1️⃣ User sends request → Controller receives
+
+        2️⃣ Controller → passes to Service
+
+        3️⃣ Service → Works with DB via Repository
+
+        4️⃣ Repository → returns result
+
+        5️⃣ Service → passes to Controller
+
+        6️⃣ Controller → sends response as JSON
+
+
+- **Controller Layer**
+
+    This layer **accepts requests from the user or frontend** and **returns the response**. In other words, this part is the “gateway to the API”.
+
+    - How it works:
+
+        It accepts HTTP requests (`GET`, `POST`, `PUT`, `DELETE`).
+
+        Forwards the request to the **Service** layer.
+
+        It sends back the result from the **Service** as a response.
+
+    - Annotations:
+
+        ![image.png](attachment:9df4a2c2-4a6b-4027-9596-7518e93382df:image.png)
+
+    - Example:
+
+        @GetMapping
+        public List<Book> getAllBooks() {
+        return bookService.getAll();}
+
+
+- **Service Layer**
+
+    All business logic happens in this layer. The Controller just handles the routing, but the Service decides how the operation is executed.
+
+    - How it works:
+        - Analyzes the given request.
+        - Communicates with the Repository layer.
+        - Necessary calculations, checks, filtering, etc. occur at this stage.
+    - Annotation:
+
+        @Service
+
+    - Example:
+
+        public List<Book> getAll() {
+        return bookRepository.findAll(); }
+
+- **Repository Layer**
+
+    This layer maintains a direct connection to the database. That is, it performs save, read, delete, update operations.
+
+    - How it works:
+        - Thanks to Spring Data JPA, you don't even need to write code for `CRUD` operations.
+        - You just create an interface and extend it from `JpaRepository`.
+    - Annotations:
+
+        @Repository
+
+    - Example:
+
+        public interface BookRepository extends JpaRepository<Book, Long> {}
+
+- **Model / Entity Layer**
+
+    This layer defines the data structure (data model). That is, it determines which tables and columns will be in the database.
+
+    - Annotations:
+
+        @Entity
+        @Table(name = "books")
+
+        - **Lombok annotations (decrease boilerplate)**
+
+            ![image.png](attachment:8787a225-ca7e-4c5b-be71-28643f8ea214:image.png)
+
+            - **boilerplate**
+
+                code that is repeated in many places with little or no modification
+
+    - Example:
+
+        ![image.png](attachment:6f03dc3e-d410-4f87-95e2-be158a17cd73:image.png)
+
+- **Application Layer**
+
+    This is the **starting point** of the project. That is, it starts the Spring container, automatically loading all the components (Controller, Service, etc.).
+
+    - Annotations:
+
+        @SpringBootApplication
+
+    - Example:
+
+        ![image.png](attachment:07bb1efa-8be3-478b-89bb-6b4a795f4707:image.png)
+
+- **Notes**
+    - Database operations should not be written directly to the Service
+    - Repository should have only DB operations
+- **The most fundamental annotations (must know)**
+
+    ![image.png](attachment:905eacdd-f214-4a2f-9b1f-0c0bcd1025fe:image.png)
+
+- **The most basic Bean Validation annotations**
+
+    ![image.png](attachment:486d95f2-c7bf-4613-b365-cc3e115e82e7:image.png)
+
+- **application.yaml for h2 db integration**
+
+    spring:
+     datasource:
+      url: jdbc:h2:mem:testdb
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
+     jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+     h2:
+      console:
+        enabled: true
+        path: /h2-console
+
+    - local h2 db url:
+
+        http://localhost:8080/h2-console
