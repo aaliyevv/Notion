@@ -39,3 +39,45 @@
 - Scope Examples
 
     ![image.png](attachment:8a35a67d-cd2d-4172-acb7-5d58ff057d41:image.png)
+
+- **Scopes for Web Applications**
+
+    These scopes are only available when using a web-based Spring `ApplicationContext` (e.g., in a Spring Boot application).
+
+    - **Request**
+        - **Description:** Creates a new bean instance for each HTTP request. The instance is destroyed after the request completes.
+        - **Usage:** `@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)`
+    - **Session**
+        - **Description:** Creates a bean instance for each HTTP session. The same bean is used as long as the user session is active.
+        - **Usage:** `@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)`
+    - **Application**
+        - **Description:** Creates a bean instance for the entire application lifecycle (i.e., for the `ServletContext`). Similar to Singleton, but stored as a `ServletContext` attribute.
+- **Spring Bean Lifecycle**
+
+    The lifecycle of a Spring bean describes the stages it goes through from its instantiation by the Spring container to its destruction. Controlling this process allows us to manage the state of the bean, allocate or release resources.
+
+    1. **Instantiation:** Spring creates a bean object by calling the class constructor.
+    2. **Populate Properties:** Spring *injects* dependencies (for example, populating fields marked with `@Autowired`).
+    3. **Aware Interfaces:** Spring checks for special *interfaces* such as `BeanNameAware`, `BeanFactoryAware`, `ApplicationContextAware` to make the bean aware of the container and calls the appropriate methods.
+    4. **Initialization:**
+        - Methods annotated with `@PostConstruct` are called.
+        - If the bean implements the `InitializingBean` interface, the `afterPropertiesSet()` method is called.
+        - The method specified with `init-method` (in the XML configuration) is called.
+        - **Most commonly used and recommended:** `@PostConstruct`.
+    5. **Ready to Use:** The bean is now ready to be used in the application.
+    6. **Destruction:** When the container is closed (for example, when the application is stopped):
+        - Methods annotated with `@PreDestroy` are called.
+        - If the bean implements the `DisposableBean` interface, the `destroy()` method is called.
+        - The method specified with `destroy-method` (in the XML configuration) is called.
+        - **Most commonly used and recommended:** `@PreDestroy`.
+- **Example: Spring Bean Lifecycle**
+
+    ### `@PostConstruct` and `@PreDestroy`)
+
+    These annotations come from the `javax.annotation` package (in Java 9+ versions, may require an additional dependency: `javax.annotation-api`).
+
+    ![image.png](attachment:04cb4eed-deb0-464e-9730-a9e7a7c16dc3:image.png)
+
+- **Notes:**
+
+    For `prototype` scoped beans, Spring does not control their destruction lifecycle. Spring creates them and passes them to the client code, and the responsibility then falls on the client.
