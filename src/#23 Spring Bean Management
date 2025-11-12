@@ -1,0 +1,41 @@
+# #23 Spring Bean Management
+
+- **Spring MVC**
+
+    In Spring MVC (Model View Controller), Controllers are main components that receive  and respond web requests. Spring Boot and MVC use powerful annotations to easily expose classes and methods to the web.
+
+- **The Main Controller Annotations**
+    - `@Controller`: This annotation marks the class as a Spring MVC Controller. It is typically used when returning "views" (e.g. Thymeleaf or JSP templates).
+    - `@RestController`: A combination of the `@Controller` and `@ResponseBody` annotations. This indicates that the class is a "RESTful" web service that directly returns HTTP response bodies such as JSON or XML. This is the most common usage in modern API implementations.
+    - `@RequestMapping`: Can be used at both class and method level. It defines URL paths to map web requests to specific methods.
+        - `@GetMapping`: Short for `@RequestMapping(method = RequestMethod.GET)` for HTTP GET requests.
+        - `@PostMapping`: Short for HTTP POST requests.
+        - `@PutMapping`: Short for HTTP PUT requests.
+        - `@DeleteMapping`: Short for HTTP DELETE requests.
+- **Receiving Request Parameters**
+    - `@RequestParam`: Binds an HTTP request parameter (query parameter) to the method parameter. For example: `/search?q=java`.
+    - `@PathVariable`: Binds a variable in the URL path to the method parameter. For example: `/users/{id}`.
+    - `@RequestBody`: Binds the HTTP request body (usually JSON or XML) to the method parameter and automatically converts it to a Java object (POJO).
+- **Example for: `@RestController`**
+
+    ![image.png](attachment:fd0aae89-e607-47b4-909a-bd545611e04d:image.png)
+
+- **Spring Bean Scopes**
+
+    In Spring, bean scope determines how many instances (objects) the Spring IoC container will create from a bean and how long these instances will live.
+
+    Scope is defined with the `@Scope` annotation.
+
+- **Main Bean Scopes**
+    - **Singleton**
+        - **Description:** The Spring IoC container creates *only* one instance for each bean definition. All requests are directed to that single instance.
+        - **Default:** This is the default scope of Spring.
+        - **Example:** `DatabaseConnection` or `Service` classes are usually singletons.
+        - **Usage:** `@Scope("singleton")` (or nothing).
+    - **Prototype**
+        - **Description:** A *new instance* of a bean is created each time it is requested from the container (e.g., when `getBean()` is called or *autowired*).
+        - **Example:** Objects that store state, but require a different state on each use.
+        - Usage**:** `@Scope("prototype")`
+- Scope Examples
+
+    ![image.png](attachment:8a35a67d-cd2d-4172-acb7-5d58ff057d41:image.png)
