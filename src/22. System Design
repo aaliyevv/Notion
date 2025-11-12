@@ -29,3 +29,50 @@
         - **Storage Capacity:** Managing large volumes of data.
         - **Latency:** Time taken for requests to be processed.
         - **Availability:** Percentage of successful requests.
+
+### **3. Key Concepts**
+
+- **Functional vs. Non-Functional Requirements**
+    - **Functional:** Actual features and behavior of the system.
+    - **Non-Functional:** Performance, scalability, availability, etc.
+- **Scalability Considerations**
+    - **Example:** Twitter’s scale may include handling 100 million daily active users.
+    - **Throughput Calculation :**
+        - **Reads:** Total reads divided by seconds in a day.
+        - **Writes:** Total writes divided by seconds in a day.
+- **Performance and Availability**
+    - **Latency:** Desired speed for reads/writes (e.g., reads < 1 second, writes < 2 seconds).
+    - **Availability:** Measure of system reliability (e.g., 99.9% availability).
+
+### **4. Back-of-the-Envelope Calculations**
+
+- **Example Calculation**
+    - **Assumptions:**
+        - 100 million daily active users.
+        - Each reads 100 tweets/day.
+        - Each writes 0.1 tweets/day.
+    - **Total Reads:** 10 billion reads/day.
+    - **Total Writes:** 10 million writes/day.
+    - **Reads per Second:** Approximately 100,000.
+    - **Writes per Second:** Approximately 100.
+- **Basic Time Units**
+    - **Second**
+    - **Millisecond:** 1/1,000 of a second.
+    - **Microsecond:** 1/1,000,000 of a second.
+    - **Nanosecond:** 1/1,000,000,000 of a second.
+- **Basic Storage Units**
+    - **Byte**
+    - **Kilobyte (KB):** 1,000 bytes.
+    - **Megabyte (MB):** 1 million bytes.
+    - **Gigabyte (GB):** 1 billion bytes.
+    - **Terabyte (TB):** 1 trillion bytes.
+    - **Petabyte (PB):** 1 quadrillion bytes.
+
+## **5. Latency and Performance Metrics**
+
+- **Typical Latency Numbers**
+    - **L1 Cache:** ~1 nanosecond.
+    - **Main Memory:** ~100 nanoseconds.
+    - **SSD Reads:** ~500 microseconds.
+    - **Network (Same Data Center):** ~500 microseconds.
+    - **Internet (California to Netherlands):** ~150 milliseconds.
