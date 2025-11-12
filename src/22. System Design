@@ -1,0 +1,31 @@
+# #22 System Design
+
+- **System design interview**
+
+    Involve solving real-world problems by designing the core functionality of systems.
+
+- **Key Components**
+    - **Servers:** Application running on servers. Scaling requires multiple servers.
+    - **Load Balancer:** Routes traffic to multiple servers.
+    - **Database:** Stores data. Servers read/write data to/from the database.
+- **High-Level Design vs. Detailed Design**
+    - **High-Level Design:** Includes servers, load balancers, and databases.
+    - **Detailed Design:** Involves specific schema, SQL vs. NoSQL, handling scale, and more.
+- **Interview Expectations**
+    - **Complexity:** Interviews typically involve designing small parts of larger systems (e.g., Twitter feed, messaging).
+    - **Scope:** Clarify the focus (feature vs. overall system).
+
+### **2. Scoping the Problem**
+
+- **Functional Requirements**
+    - **Features:** What functionality is needed? E.g., "Like" button functionality in Twitter.
+    - **Example:**
+        - **Feature:** User likes a tweet.
+        - **Requirement:** Store user ID to prevent multiple likes by the same user.
+- **Non-Functional Requirements**
+    - **Scalability:** How to handle large scale (e.g., millions of users).
+    - **Performance Metrics:**
+        - **Throughput:** Number of requests per second.
+        - **Storage Capacity:** Managing large volumes of data.
+        - **Latency:** Time taken for requests to be processed.
+        - **Availability:** Percentage of successful requests.
