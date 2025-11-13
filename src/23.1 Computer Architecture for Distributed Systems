@@ -24,3 +24,30 @@
         - **Reads and Writes**: The CPU manages data flow between RAM and disk and executes code stored in memory.
         - **Speed**: CPU speeds are typically measured in gigahertz (GHz), but overall performance depends on architecture and cache utilization.
         - **Computations**: All mathematical operations, such as addition or subtraction, are performed by the CPU.
+- **Cache**
+    - **Definition**: The cache is a small, high-speed memory located inside the CPU, used to store frequently accessed data.
+    - **Key Concepts**:
+        - **Speed**: The cache is the fastest memory available, with access times in nanoseconds (10^-9 seconds).
+        - **Size**: Measured in megabytes (MB), much smaller than RAM or disk.
+        - **Use Case**: Speeds up data retrieval by temporarily storing data frequently accessed from RAM.
+- **Data Persistence and Volatility**
+    - **Disk vs. RAM**:
+        - **Disk**: Data is persistent, meaning it remains saved even after a crash or shutdown.
+        - **RAM**: Data is volatile, meaning it is lost when the power is off or the system crashes.
+    - **Importance**: Ensuring important data (like a document you’re working on) is saved to disk prevents data loss during system crashes.
+- **The Limitations of a Single Computer**
+
+    **Hardware Limitations**:
+
+    - **Storage Expansion**: While it’s possible to add more disks, there’s a limit to how much storage can be added.
+    - **Memory (RAM) Limitations**: Increasing RAM can improve performance, but only to a certain extent due to hardware limits.
+    - **CPU Speed**: CPU performance has followed **Moore’s Law**, doubling approximately every two years. However, CPU speed increases are slowing down, creating a "plateau" effect.
+- **Introduction to Distributed Systems**
+    - **Definition**: A distributed system is a collection of multiple computers working together to solve a larger problem.
+    - **Why Distributed Systems?**
+        - **Overcoming Limitations**: Individual computers have hardware limits (e.g., CPU speed, storage, memory). Combining multiple computers allows for more processing power and storage capacity.
+        - **Scalability**: Distributed systems can scale to handle larger and more complex tasks than a single computer can handle.
+- **Conclusion**
+    - **Computer Architecture**: Understanding the core components (Disk, RAM, CPU, Cache) of a computer is essential to understanding how software operates.
+    - **Limitations of Individual Computers**: While upgrading components (disk, RAM, CPU) can improve performance, all have limits.
+    - **Distributed Systems**: These systems allow us to overcome the limitations of single machines by leveraging the power of multiple machines.
