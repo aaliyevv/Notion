@@ -1,0 +1,26 @@
+# #23.1 Computer Architecture for Distributed Systems
+
+- **Lesson Overview**
+
+    Before designing large-scale distributed systems, it’s important to understand the core components of a single computer — its essential software parts, their roles, and how they work together to execute code. This understanding helps us see the limitations of individual computers and why distributed systems are needed to overcome those limits.
+
+- **Storage: Disk (HDD/SSD)**
+    - **Definition**: The disk (also referred to as storage, hard drive, HDD, or SSD) stores data persistently, meaning the data is saved even when the computer is turned off or crashes.
+    - **Key Concepts**:
+        - **HDD**: Hard Disk Drive, slower, but can store large amounts of data.
+        - **SSD**: Solid State Drive, faster but more expensive.
+        - **Capacity**: Disk storage is typically measured in terabytes (TB), where 1 TB = 10^12 bytes, which can store a vast amount of data.
+    - **Function**: Stores files, software, and system data long-term.
+- **Memory: RAM (Random Access Memory)**
+    - **Definition**: RAM stores data temporarily, allowing for quick read and write operations.
+    - **Key Concepts**:
+        - **Speed**: RAM is much faster than disk storage, with access times measured in microseconds (10^-6 seconds).
+        - **Capacity**: Measured in gigabytes (GB), with typical ranges from 2GB to 32GB, though higher capacities are available.
+        - **Volatile**: Data in RAM is lost if the computer is turned off or crashes.
+    - **Use Case**: Used for data that the CPU needs quick access to while running programs.
+- **CPU (Central Processing Unit)**
+    - **Definition**: The CPU is the "brain" of the computer, responsible for executing instructions and performing calculations.
+    - **Key Concepts**:
+        - **Reads and Writes**: The CPU manages data flow between RAM and disk and executes code stored in memory.
+        - **Speed**: CPU speeds are typically measured in gigahertz (GHz), but overall performance depends on architecture and cache utilization.
+        - **Computations**: All mathematical operations, such as addition or subtraction, are performed by the CPU.
