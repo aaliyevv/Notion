@@ -1,0 +1,64 @@
+# #24 Designing RESTful APIs
+
+## Handling requests and responses, and implementing best practices
+
+- **Core REST Concepts**
+    
+    A **REST API** is an architectural style for creating scalable web services. It relies on a stateless, client-server model where requests and responses are built around the transfer of "representations" of resources.
+    
+    - **Client-Server:** The UI (client) is separate from the data storage (server), allowing them to evolve independently.
+    - **Stateless:** Every request must contain all information needed for the server to process it. The server holds no session state.
+    - **Uniform Interface:** A consistent interface simplifies the architecture.
+    - **Uniform Interface**
+        - **Resources:** Identified by URIs (e.g., `/products/123`).
+        - **HTTP Verbs:** Use standard methods (`GET`, `POST`, `PUT`, `DELETE`) to operate on resources.
+        - **Self-Descriptive:** Responses include metadata like `Content-Type: application/json`.
+- **Project Setup**
+    
+    Use the **Spring Initializr** ([start.spring.io](https://start.spring.io/)) to generate a new project. The only required dependency for a REST API is **Spring Web**.
+    
+- **API Design: Resources and Endpoints**
+    - Design your API around **resources** (nouns), not actions (verbs).
+        - **Good:** `/users`, `/users/{userId}/orders`
+        - **Bad:** `/getUsers`, `/createOrder`
+    - Use standard HTTP methods to define the action.
+        
+        
+        | **HTTP Method** | **CRUD Operation** | **Description** |
+        | --- | --- | --- |
+        | `GET` | Read | Retrieve one or more resources. |
+        | `POST` | Create | Create a new resource. |
+        | `PUT` | Update/Replace | Update an existing resource. |
+        | `DELETE` | Delete | Remove a resource. |
+- **Handling Requests**
+    - Use a `@RestController` to define API request handlers. This annotation combines `@Controller` and `@ResponseBody`, ensuring return values are automatically serialized to JSON.
+
+        ![image.png](attachment:326b79c0-5af8-4d1c-ade1-737a68d046d5:image.png)
+
+    - **`@GetMapping`, `@PathVariable`, `@RequestParam`, `@PostMapping`, `@RequestBody`, `@PutMapping("/{id}")`, `@DeleteMapping("/{id}")`.**
+
+        ![image.png](attachment:6a715894-6632-42c8-90ec-09ffb898ed4c:image.png)
+
+- **Crafting Responses**
+    - By default, `@RestController` handles object-to-JSON conversion. For full control over the response, including status codes and headers, use `ResponseEntity`.
+
+        ![image.png](attachment:3a0074e1-713e-4200-9bbd-690b22358f83:image.png)
+
+    - **Common HTTP Status Codes:**
+        - `200 OK`: Successful request.
+        - `201 Created`: Resource created successfully.
+        - `204 No Content`: Success, but no data to return (e.g., after a DELETE).
+        - `400 Bad Request`: Client-side error (e.g., invalid JSON, validation failure).
+        - `404 Not Found`: The requested resource does not exist.
+        - `500 Internal Server Error`: An unexpected error occurred on the server.
+- **API Best Practices**
+    - **Versioning:** Include a version in your API path to manage future changes without breaking clients. Example: `/api/v1/products`.
+    - **Centralized Error Handling:** Use `@ControllerAdvice` and `@ExceptionHandler` to create a global handler for exceptions. This avoids `try-catch` blocks in your controllers and ensures consistent error responses.
+
+    ![image.png](attachment:f4aab5bc-3507-4d3f-b605-20848d9f7975:image.png)
+
+- **DTOs and Validation**
+    - **Data Transfer Objects (DTOs):** Do not expose your internal database entities directly. Use DTOs to shape the data for your API, preventing unintended data exposure and decoupling your API from your database schema.
+    - **Validation:** Use the `spring-boot-starter-validation` dependency to validate incoming data. Add annotations (`@NotBlank`, `@Min`, etc.) to your DTOs and use `@Valid` in your controller methods. Spring will automatically return a `400 Bad Request` if validation fails.
+
+    ![image.png](attachment:24bf8175-b5b3-4a20-b901-fb49c6c04fba:image.png)
