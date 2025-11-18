@@ -1,0 +1,18 @@
+# #24.1 High-Level Application Architecture (1)
+
+- **Overview**
+
+    ![image.png](attachment:839071ce-209f-44f7-af7b-fc3c1f6c9d6f:image.png)
+
+- **Developer's Perspective**
+    - As developers, we write code, and this code needs to be deployed to a server.
+    - **What is a server?** For now, let's assume it's a computer that handles requests and serves users. We'll explore this further later in the course.
+- **Code Deployment Process**
+    - Before the code reaches the server, it usually goes through a build and deploy phase. This could happen on a developer's local machine or more commonly on a **CI/CD (Continuous Integration/Continuous Deployment)** server.
+    - **CI/CD servers** are frequently used in professional production-grade applications to automate the build and deployment process.
+- **Server and Storage**
+    - A server will need to **store data** using some kind of external storage mechanism, which could be a database or other storage forms.
+    - This storage is assumed to be **distributed** and located separately from the server. The server connects to the storage over a network.
+- **User's Perspective**
+    - From an external user’s perspective, they interact with our server via requests, usually from their browser.
+    - The server might respond with front-end code (HTML, JavaScript) or handle requests through an API that returns data (often in JSON format).
