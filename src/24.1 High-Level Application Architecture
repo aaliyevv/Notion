@@ -16,3 +16,47 @@
 - **User's Perspective**
     - From an external user’s perspective, they interact with our server via requests, usually from their browser.
     - The server might respond with front-end code (HTML, JavaScript) or handle requests through an API that returns data (often in JSON format).
+- **Scaling the System**
+    - **Vertical Scaling**
+
+        If a single server can't handle all requests, we can upgrade its hardware (CPU, RAM, disk) to handle more traffic. This is called **vertical scaling**.
+
+    - **Horizontal Scaling**
+
+        However, there are limits to vertical scaling. So, we can use **horizontal scaling**, where multiple copies of the server handle requests. This prevents a single server from becoming a bottleneck.
+
+- **Load Balancing**
+
+    With multiple servers, we need a **load balancer** to distribute traffic evenly. The load balancer ensures that no single server handles too much traffic while others remain idle.
+
+- **Inter-server Communication**
+
+    Servers often need to communicate with other external servers. For example, an app like [NeatCode.io](http://neatcode.io/) communicates with services like the **Stripe API** for payments.
+
+- **Logging and Monitoring**
+    - **Logging**
+
+        Servers generate **logs** that developers use to understand system performance or troubleshoot issues. These logs are usually stored in an external logging service.
+
+    - **Metrics**
+
+        In addition to logs, we need insight into how our server is performing in terms of CPU usage, memory, and other resources. For this, we use a **metrics service**.
+
+    - **Alerting**
+
+        Metrics can trigger **alerts**. For example, if successful user requests drop below a threshold (e.g., 95%), an alert notifies developers immediately.
+
+- **Networking and Communication**
+    - These components (servers, storage, logs, etc.) don’t always run on the same machine, so they communicate over a network.
+    - Understanding the basics of **networking** is essential to designing large-scale applications. Networking allows these distributed components to work together seamlessly.
+- **Conclusion**
+
+    This lesson has provided an overview of high-level application architecture. Over the next lessons, we’ll dive deeper into each of these components and explore more complex concepts, such as networking, scaling strategies, and performance optimization.
+
+- **Notes**
+    - **Vertical Scaling**: Improving a single server’s hardware.
+    - **Horizontal Scaling**: Adding more servers to handle traffic.
+    - **Load Balancing**: Distributing traffic across multiple servers.
+    - **Logging and Metrics**: Tools for monitoring server performance.
+    - **Alerting**: Automatic notifications when performance issues arise.
+    - **Networking**: Enables communication between distributed system components.
