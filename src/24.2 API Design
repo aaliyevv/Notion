@@ -1,4 +1,4 @@
-# #24.2 **API Design**
+# #24.2 **API Design** (1)
 
 - Overview
 
@@ -34,3 +34,65 @@
     •	Use URLs like /v0.34.32/cards/123 to introduce new versions (/v2/cards/123) while keeping the older versions intact.
 
     •	Always provide clear, well-documented release notes when making changes to your API.
+
+- **Implement Pagination**
+
+    **Objective**: Avoid overwhelming API consumers by limiting the amount of data returned.
+
+    •	Pagination improves performance and user experience by limiting how much data is returned in a single response.
+
+    •	Two common methods:
+
+    •	**Page-based pagination**: Uses page numbers and a fixed page size (e.g., page 2 returns records 11–20 for a page size of 10). However, this method may slow down large datasets.
+
+    •	**Cursor-based pagination**: Uses a pointer to track pages, which is more efficient when data changes frequently.
+
+- **Enable Sorting and Filtering with Query Strings**
+
+    **Objective**: Provide flexibility in retrieving API data by allowing sorting and filtering.
+
+    •	Use query strings for sorting and filtering data, such as ?sortBy=registered to sort users by registration date or ?filter=color=blue to get only blue products.
+
+    Benefits:
+
+    •	Response data becomes more understandable, with the applied filters and sort orders clearly visible.
+
+    •	You can add more criteria over time without breaking existing integrations.
+
+    •	Filtered and sorted results can be cached, speeding up future requests.
+
+- **Prioritize Security**
+
+    **Objective**: Protect sensitive data and prevent unauthorized access to your API.
+
+    •	**Use HTTP headers for sensitive information**: place API keys or credentials in headers like **Authorization** instead of URLs to prevent them from being exposed in logs or browser history.
+
+    •	**Enforce TLS encryption**: Encrypt all API traffic to ensure end-to-end security.
+
+    •	**Access control**: Validate API keys and tokens for every request to ensure only authorized users can access your data.
+
+    Always stay updated on the latest security best practices to safeguard your API.
+
+- **Simplify Cross-Resource References**
+
+    **Objective**: Make relationships between resources easy to follow.
+
+    •	Instead of using long, complex query strings, keep resource references clean and direct.
+
+    •	For example, instead of /cards/123?item=321, use /cards/123/items/321. This clear structure makes it easier for developers to understand how different resources are related.
+
+- **Plan for Rate Limiting**
+
+    **Objective**: Protect your API from being overwhelmed and ensure fair usage across clients.
+
+    Implement rate limiting to control the number of requests each client can make. Quotas can be set based on criteria like:
+
+    •	IP address
+
+    •	User account
+
+    •	API endpoint category
+
+    Example: A customer on a basic plan might get 1,000 requests per day, while an individual IP address might be capped at 20 requests per minute.
+
+    Rate limiting prevents abuse (such as DDoS attacks) and helps ensure consistent performance for all users.
