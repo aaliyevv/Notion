@@ -1,0 +1,36 @@
+# #24.2 **API Design**
+
+- Overview
+
+    APIs power much of the modern web, enabling services like social media, weather apps, and booking platforms to function smoothly. Designing reliable, secure, and easy-to-use RESTful APIs is crucial for long-term success. In this lesson, we’ll cover key best practices to keep in mind while designing APIs that developers love using and companies can depend on.
+
+- **Use Clear Naming Conventions**
+
+    **Objective**: Make your API intuitive and easy to understand for developers.
+
+    - Use clear, logical names when building your API.
+    - For example, instead of using /getCard123, use /card-names/123. The plural “cards” indicates you are working with a collection of resources, not a single item.
+    - Consistency is essential — use clear and uniform naming conventions that distinguish between collections and individual items, making your API easier for developers to understand and use.
+- **Ensure API Reliability with Idempotent Methods**
+
+    **Objective**: Make sure that repeated API calls have predictable outcomes.
+
+    •	Idempotency means that multiple identical requests will result in the same outcome. This is crucial for API reliability, especially in the case of retries due to network issues.
+
+    •	**POST** requests that create resources are **not** idempotent by default. Add logic to handle retries, such as requiring a client-generated unique ID for every request.
+
+    •	**GET** requests are idempotent—retrieving data does not change it.
+
+    •	**PUT** (which updates entire resources) is usually idempotent, but **PATCH** (which updates parts of resources) may not be, especially if it modifies arrays.
+
+    •	**DELETE** is idempotent—once an item is deleted, further delete requests return errors but don’t delete the resource again.
+
+- **Add API Versioning**
+
+    **Objective**: Maintain backward compatibility while introducing new features.
+
+    •	Over time, your API will evolve. Versioning ensures that changes don’t break existing applications using older versions.
+
+    •	Use URLs like /v0.34.32/cards/123 to introduce new versions (/v2/cards/123) while keeping the older versions intact.
+
+    •	Always provide clear, well-documented release notes when making changes to your API.
