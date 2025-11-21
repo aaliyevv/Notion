@@ -23,3 +23,54 @@
     - `@Size(min, max)`: Checks the size of a String, Collection, or Map.
     - `@Min(value)` / `@Max(value)`: Checks for the minimum and maximum limits of numeric values.
     - `@Pattern(regexp)`: Checks if the field matches a given regular expression.
+- Enabling Validation in the Controller
+
+    In your Controller method, annotate the `Request Body`you want to validate with the `@Valid` annotation. If the incoming `CreateUserRequest`object violates the validation rules, Spring Boot will automatically throw a `MethodArgumentNotValidException` error.
+
+    - Example:
+
+        ![image.png](attachment:c99b8a08-8047-456d-92ce-41d724f77015:image.png)
+
+- Global Exception Handling
+
+    Instead of writing`try-catch` blocks in every controller method, `@ControllerAdvice` (or `@RestControllerAdvice`) is used to handle all errors in one place. This makes the code cleaner and more manageable.
+
+- Create an Error Response model
+
+    Define a standard JSON format that will be returned to the user when an error occurs.
+
+    - Example:
+
+        ![image.png](attachment:aab7633f-9fbd-495a-b70b-f0fb176b6521:image.png)
+
+- Create an `@RestControllerAdvice` class
+
+    This class will "catch" errors thrown from all controllers.
+
+    - Example:
+
+        ![image.png](attachment:c65f26b2-a2af-4ef0-8cdf-5a7462acf74e:image.png)
+
+    - Annotations
+        - `@RestControllerAdvice`: Indicates that this class is a global error handler.
+        - `@ExceptionHandler(Exception.class)`: Specifies what type of error this method will catch.
+        - `MethodArgumentNotValidException`: This is the error thrown when the `@Valid` annotation fails. We catch this error and return a `Map` of the field names and their associated error messages.
+- **API Documentation (Swagger/OpenAPI)**
+
+    A tool that automatically creates interactive, visual documentation for your API. The most popular integration with Spring Boot is the `springdoc-openapi` , it will automatically scan your `@RestController` and `@RequestMapping` annotations and generate documentation.
+
+- Accessing Swagger UI
+    - After launching your application, visit the following URL:
+
+        `http://localhost:8080/swagger-ui/index.html`
+
+
+    You'll see all your endpoints, the parameters they accept (including DTOs), the responses they return, and even an interface for testing your API directly from the browser.
+
+- Addition: Enriching Documentation
+
+    You can use annotations like `@Operation` and `@ApiResponse` to make your documentation more detailed.
+
+    - Example:
+
+        ![image.png](attachment:5effa633-2795-49aa-be6f-d5dde709f64d:image.png)
