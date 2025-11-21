@@ -1,0 +1,25 @@
+# #25 Validation, Global Exception Handling, Swagger / OpenAPI 3
+
+- **Overview**
+    1. **Validation:** Checking the correctness of the data coming from the user.
+    2. **Global Exception Handling:** Handling errors that occur in the application from a single center.
+    3. **API Documentation (Swagger/OpenAPI):** Documenting your APIs interactively.
+- Conclusion
+
+    When `Validation` rules are violated, your  `Error Handler` will catch this and the user will be informed via the `Swagger UI` about exactly which field is invalid and why.
+
+- **Validation**
+
+    Setting Constraints in a DTO/Model: Implement validation annotations in your classes that accept data from the user (usually DTO - Data Transfer Object).
+
+    - **Example: `CreateUserRequest.java`**
+
+        ![image.png](attachment:91babe6e-35bb-441b-aa35-609cd85643a0:image.png)
+
+- Main Annotations
+    - `@NotBlank`: Checks if the field is `null` or empty (consisting of only spaces) (for String).
+    - `@NotNull`: Checks if the field is `null`.
+    - `@Email`: Checks if the field is in the correct email format.
+    - `@Size(min, max)`: Checks the size of a String, Collection, or Map.
+    - `@Min(value)` / `@Max(value)`: Checks for the minimum and maximum limits of numeric values.
+    - `@Pattern(regexp)`: Checks if the field matches a given regular expression.
