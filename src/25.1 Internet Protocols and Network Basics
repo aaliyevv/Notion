@@ -60,3 +60,79 @@
         +-------------------+
         | Network Layer     |  <-- Network Layer (IP)
         +-------------------+
+
+- **Public vs. Private IP Addresses**
+    - Public IP Addresses
+        - **Definition**: Addresses accessible over the internet.
+        - **Usage**: Required for servers to be reachable by clients globally.
+
+    - Private IP Addresses
+        - **Definition**: Addresses used within a local network (LAN), not accessible publicly.
+        - **Role of Routers**: Assign private IPs to local devices and use a single public IP for internet communication.
+    - Public vs. Private IP Addresses Diagram
+
+        ```
+                        [Internet]
+                            |
+                    [Router with Public IP]
+                            |
+                   +--------+--------+
+                   |                 |
+             [Device A]         [Device B]
+            (Private IPs in LAN)
+
+        ```
+
+
+- **Static and Dynamic IP Addresses**
+    - Static IP Addresses
+        - **Characteristics**: Permanent and unchanging.
+        - **Importance**: Essential for servers that need consistent accessibility.
+    - Dynamic IP Addresses
+        - **Characteristics**: Assigned temporarily and can change over time.
+        - **Dynamic DNS**: Services that map a changing IP to a consistent domain name.
+    - Static vs. Dynamic IP Addresses Diagram
+
+        ```
+        [ISP]
+          |
+        [Router]
+          |
+        [Devices with Dynamic IPs]
+
+        ```
+
+- **Ports**
+    - **Definition**: Numerical identifiers (16-bit values ranging from 0 to 65,535) used to manage multiple communication channels on a single IP address.
+    - **Purpose**: Allow multiple services to run on a single machine without interference.
+    - Networking Ports Diagram
+
+        ```
+        [Server IP]
+             |
+        +----------+----------+
+        | Port 80  | Port 443 |
+        +----------+----------+
+
+        ```
+
+- **Common Ports and Protocols**
+    - **Port 80**: Default for HTTP traffic.
+    - **Port 443**: Default for HTTPS traffic.
+    - **Port 22**: Commonly used for SSH connections.
+- **Accessing Local Applications**
+
+    The `localhost` and Loopback Address
+
+    - **`localhost`**: A hostname that refers to your own computer.
+    - **IP Address**: `127.0.0.1` is the loopback address used to test network applications locally.
+    - **Usage**: Allows developers to run and access applications on their machine without external network communication.
+    - Accessing `localhost` Diagram
+
+        ```
+        [Your Computer]
+              |
+        [127.0.0.1 or localhost]
+              |
+        [Application on Port 4200]
+        ```
