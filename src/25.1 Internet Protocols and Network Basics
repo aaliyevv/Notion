@@ -1,0 +1,62 @@
+# #25.1 Internet Protocols and Networking Basics
+
+- **Internet Protocol (IP)**
+
+    is essential for data communication between machines over a network. It defines how data is packaged into IP packets.
+
+    - IP Packets
+        - **IP Header**: Metadata about the packet, including source and destination IP addresses.
+        - **Data Payload**: The actual data being transmitted.
+
+        ### Structure of an IP Packet
+
+        ```
+        +------------+------------+
+        | IP Header  |   Data     |
+        +------------+------------+
+        ```
+
+- **TCP (Transmission Control Protocol)**
+    - **Sequencing Packets**: Each TCP packet includes a sequence number in its header.
+    - **Ensuring Order**: The receiver uses these numbers to reassemble data correctly.
+    - **Reliable Transmission**: TCP manages data integrity and retransmits lost packets.
+    - TCP Packet Within an IP Packet
+
+        ```
+        +------------+---------------------+
+        | IP Header  |    IP Data          |
+        +------------+---------------------+
+                              |
+                              v
+                       +------------+------------+
+                       | TCP Header |   Data     |
+                       +------------+------------+
+
+        ```
+
+- **Example of role of TCP**
+
+    Sending a Book Through the Mail
+
+    - Imagine needing to send a book using only envelopes:
+        - **Breaking Down Data**: Tear out pages and distribute them into multiple envelopes.
+        - **Reassembly Challenge**: Without page numbers, the recipient can't easily reconstruct the book.
+- **Layers of Communication Protocols**
+
+    Data transmission involves multiple protocol layers:
+
+    **Network Layer (IP)**: Handles device addressing and routing between machines.
+
+    **Transport Layer (TCP)**: Manages reliable data transport and sequencing.
+
+    **Application Layer (HTTP)**: Used by software applications for network communication.
+
+    - **Protocol Layers Diagram**
+
+        +-------------------+  <-- Application Layer (HTTP)
+        | Application Layer |
+        +-------------------+
+        | Transport Layer   |  <-- Transport Layer (TCP)
+        +-------------------+
+        | Network Layer     |  <-- Network Layer (IP)
+        +-------------------+
