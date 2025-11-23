@@ -35,3 +35,58 @@
         •	When you buy a domain (e.g., google.com), you own the primary domain name.
 
         •	You can manage the DNS records, which map the domain to an IP address (usually via an A-record for address mapping).
+
+- **Components of a URL**
+
+    A URL (Uniform Resource Locator) is composed of several parts:
+
+    - **Protocol**
+
+        •	**HTTP / HTTPS**: The protocol specifies how data is transferred between the client and server.
+
+        •	**Other Protocols**: FTP (File Transfer Protocol), or even a local file protocol for accessing files on your own system, can also be used.
+
+    - **Domain Structure**
+        - **Top-Level Domain (TLD)**
+
+            The last part of a domain, such as .com, .io, .jp.
+
+            •	**Country Code TLDs**: Examples include .jp (Japan) and many others.
+
+            •	Managed by ICANN (The Internet Corporation for Assigned Names and Numbers).
+
+        - **Primary Domain**
+
+            The core part of a domain, e.g., google.com.
+
+            •	When you purchase a domain, you own this section.
+
+        - **Subdomains**
+
+            A domain section that precedes the primary domain (e.g., www.google.com or domains.google.com).
+
+            •	Subdomains can be used for organizing content or services within a site.
+
+            •	They are optional, and www is a common subdomain that historically was used but is no longer necessary.
+
+- **Subdomains**
+
+    •	**Examples**: www.google.com, maps.google.com, domains.google.com.
+
+    •	Subdomains allow the creation of unique sections or services within a website.
+
+    **Example**: Google uses subdomains to separate services (e.g., domains.google.com for its domain service).
+
+- **URL Path and Query Parameters**
+
+    •	**Path**: The part of the URL that follows the domain, typically pointing to specific resources on a website (e.g., google.com/maps).
+
+    •	**Query Parameters**: Optional parts of the URL used to pass additional data to the server (e.g., google.com/search?q=cats).
+
+    They are typically used for dynamic content or searches.
+
+- **Conclusion**
+    - **Server**: A computer with a public IP address that handles requests.
+    - **DNS**: Translates domain names to IP addresses, guiding requests to the correct server.
+    - **Subdomains**: Optional parts of a domain used to organize different services or sections of a site.
+    - **URL**: Consists of the protocol, domain, subdomains, path, and query parameters.
