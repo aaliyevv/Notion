@@ -1,0 +1,37 @@
+# **#25.2 DNS**
+
+## Domain Name System
+
+![image.png](attachment:87f1e5ab-ad60-42ff-b69f-ab11d8bb7f59:image.png)
+
+![image.png](attachment:80e4e384-222b-4e75-9e9a-98629f6a0572:image.png)
+
+- **What is a Server?**
+
+    •	**Definition**: A server is essentially a computer with a public IP address.
+
+    •	**Purpose**: Servers are configured to allow external traffic and handle requests from users.
+
+    •	**Functionality**: When you send a request (e.g., entering a URL), the server receives it, processes it, and responds appropriately.
+
+- **Firewall Configuration**
+
+    •	Public servers have firewalls configured to allow requests from external users.
+
+    •	On the contrary, for private devices like personal routers, firewalls block external traffic to ensure security.
+
+- **Domain Name System (DNS)**
+
+    The Domain Name System (DNS) acts as the phone book of the internet, linking domain names to IP addresses.
+
+    - **DNS Request Flow**
+
+        •	When you type a domain name (e.g., google.com), DNS converts it into an IP address and routes your request to the corresponding server.
+
+        •	This system is essential for user-friendly navigation on the internet, translating human-readable domain names into machine-friendly IP addresses.
+
+    - **Buying a Domain**
+
+        •	When you buy a domain (e.g., google.com), you own the primary domain name.
+
+        •	You can manage the DNS records, which map the domain to an IP address (usually via an A-record for address mapping).
