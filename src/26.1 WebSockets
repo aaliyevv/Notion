@@ -22,3 +22,27 @@
     | **Connection** | New connection per request | Persistent connection |
     | **Use case** | Ideal for static or infrequent data exchange | Ideal for real-time, fast data exchange |
     | **Efficiency** | Inefficient for frequent updates (requires polling) | More efficient for frequent, real-time updates |
+- **Polling vs. WebSockets**
+    - **Polling** (with HTTP): The client periodically sends requests to the server to check for new data (e.g., Twitter feed or chat messages). This is inefficient for high-volume real-time data, as it causes overhead by continuously opening and closing connections.
+    - **WebSockets**: After the initial WebSocket handshake, the server can push updates to the client without the need for repeated requests(low latency). This makes WebSockets ideal for high-frequency, real-time scenarios like chat systems or live sports scores.
+- **How WebSockets Work**
+    1. **WebSocket Handshake**: The client initiates the connection by sending an HTTP request to the server. The server responds with status code `101` ("Switching Protocols") to upgrade the connection to WebSockets.
+    2. **Persistent Communication**: Once the WebSocket connection is established, the client and server can exchange messages in both directions without needing to close or reopen connections.
+    3. **Real-time Updates**: For example, in a Twitch chat, messages from users are sent to the server. The server then pushes incoming messages from other users to all connected clients in real-time.
+- **Drawbacks of WebSockets**
+    - **Stateful connections**: WebSockets maintain a persistent state between client and server, which can lead to complications if the connection breaks. For example, if a connection is dropped, it requires handling reconnection logic and potential data loss during downtime.
+    - **Resource-intensive**: Since the connection stays open, WebSockets can consume more server resources than stateless HTTP requests, especially if not properly managed.
+- **Example Scenario: Twitch Chat**
+
+    Let's explore how WebSockets are used in a Twitch chat system:
+
+    1. The client (your browser) sends an HTTP request to Twitch’s server to establish a WebSocket connection.
+    2. The server responds with a status code `101`, upgrading the connection to WebSockets.
+    3. Once connected, the client and server communicate in both directions:
+        - **Client to Server**: As you type messages, they are sent to the server.
+        - **Server to Client**: The server pushes new messages from other users in real-time to your chat window.
+    4. WebSockets eliminate the need for constant polling, which would be inefficient with hundreds of messages per minute in a busy chat room.
+- Conclusion
+    - WebSockets solve the inefficiencies of HTTP for real-time communication by providing a persistent, bi-directional connection.
+    - While WebSockets offer real-time capabilities and low-latency communication, they also require careful management of connection states and resource usage.
+    - They are ideal for chat applications, live feeds, and scenarios with frequent data exchange where polling would cause excessive overhead.
