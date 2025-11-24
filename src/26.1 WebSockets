@@ -1,0 +1,24 @@
+# #26.1 WebSockets
+
+- Overview
+
+    ![image.png](attachment:6970f96d-3cab-4af8-ad15-63575b2cbcb2:image.png)
+
+    ![image.png](attachment:16f51b48-aeb2-48e7-9e40-b50341fadf59:image.png)
+
+    ![image.png](attachment:959de09c-e8a0-422a-932e-75fa3e25ee1c:image.png)
+
+- **WebSockets**
+    - **Full-duplex communication**: WebSockets enable bidirectional data flow between the client and server, enabling both the client and server to send and receive messages simultaneously over a single, persistent connection, unlike HTTP which relies on request-response cycles.
+    - **Persistent connection**: Once the WebSocket handshake is complete, the connection remains open, allowing for continuous data exchange without the overhead of establishing new connections.
+    - **Use cases**: WebSockets are particularly useful in real-time applications like chat systems, live feeds (e.g., Twitter or Twitch chat), and gaming platforms where low latency and high frequency of data exchange are required.
+- **HTTP vs. WebSockets**
+
+    HTTP is great for request-response communication but has limitations when it comes to real-time applications. Let's compare the two:
+
+    | Feature | HTTP | WebSockets |
+    | --- | --- | --- |
+    | **Communication** | Unidirectional (client initiates) | Bidirectional (full-duplex) |
+    | **Connection** | New connection per request | Persistent connection |
+    | **Use case** | Ideal for static or infrequent data exchange | Ideal for real-time, fast data exchange |
+    | **Efficiency** | Inefficient for frequent updates (requires polling) | More efficient for frequent, real-time updates |
