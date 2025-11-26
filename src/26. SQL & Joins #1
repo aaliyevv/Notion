@@ -1,0 +1,44 @@
+# #26. SQL & JOINS #1
+
+- **Overview**
+
+    ![image.png](attachment:d28467e8-d8f9-4679-b05c-dd63bf0ac576:image.png)
+
+- **Basic SQL Commands**
+    - `SELECT`: Retrieving data
+    - `FROM`: Specifying the table
+    - `WHERE`: Filtering records
+    - `ORDER BY`: Sorting results
+    - `DISTINCT`: Selecting unique values
+- **Data Types**
+
+    Common types (INT, VARCHAR, DATE, DECIMAL, etc.)
+
+    ![image.png](attachment:753adea0-3dbc-4827-9588-9acaefed5b9f:image.png)
+
+- **Filtering with Operators**
+    - Comparison: `=`, `>`, `<`, `>=`, `<=`, `!=` or `<>`
+    - Logical: `AND`, `OR`, `NOT`
+    - `IN`, `BETWEEN`, `LIKE` (for pattern matching), `IS NULL`
+
+        IN – checks if a value is in a list of values.
+        BETWEEN – checks if a value is between two values (inclusive).
+        LIKE – used for simple pattern matching in strings (% and _) (ex: cmd + F).
+        IS NULL – checks if a value is NULL (no value).
+
+    - `LIKE`
+
+        ![image.png](attachment:fdea0ff7-024e-4eb3-a51d-e7ae11c3705f:image.png)
+
+- **Aggregate Functions**
+    - `COUNT()`: Counts rows
+    - `SUM()`: Sums values
+    - `AVG()`: Calculates average
+    - `MIN()`: Finds minimum value
+    - `MAX()`: Finds maximum value
+- **Grouping Data**
+    - `GROUP BY`: Groups rows with the same values in specified columns
+    - `HAVING`: Filters groups (similar to `WHERE` but for groups)
+- **Table Aliases**
+
+    Using `AS` to temporarily rename tables for query readability.
