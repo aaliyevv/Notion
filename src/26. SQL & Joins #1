@@ -42,3 +42,26 @@
 - **Table Aliases**
 
     Using `AS` to temporarily rename tables for query readability.
+
+### Module 2
+
+    - **What are JOINS?**
+        - Why we need them: Combining related data from different tables.
+        - The concept of relationships between tables.
+    - **Keys: The Foundation of JOINS**
+        - **Primary Key (PK):** A unique identifier for each record in a table.
+        - **Foreign Key (FK):** A column in one table that refers to the Primary Key in another table, establishing a link.
+    - **Types of SQL JOINS**
+        - **INNER JOIN**
+        - **LEFT JOIN (or LEFT OUTER JOIN)**
+        - **RIGHT JOIN (or RIGHT OUTER JOIN)**
+        - **FULL JOIN (or FULL OUTER JOIN)**
+        - **SELF JOIN**
+        - **CROSS JOIN (Cartesian Product)**
+    - **JOIN Syntax and Aliases**
+
+        Using table aliases in JOINS for conciseness and clarity.
+
+    - **Joining Multiple Tables**
+
+        Extending JOIN concepts to combine data from three or more tables.
