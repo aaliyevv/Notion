@@ -19,3 +19,31 @@
     * Purpose: To perform calculations on groups of rows.
     * Syntax: `SELECT column_group, AGGREGATE_FUNCTION(column_value) FROM TableName GROUP BY column_group;`
     * Example: `SELECT DepartmentID, COUNT(EmployeeID) AS NumberOfEmployees FROM Employees GROUP BY DepartmentID;`
+
+
+### **Module 2: SQL JOINS - Combining Tables**
+
+- **What are Keys?**
+    - **Primary Key (PK):** Uniquely identifies each row in a table. `Employees.EmployeeID` and `Departments.DepartmentID` are PKs.
+    - **Foreign Key (FK):** A field in one table that uniquely identifies a row of another table. `Employees.DepartmentID` is an FK referencing `Departments.DepartmentID`. This link is crucial for JOINS.
+- **Types of JOINS**
+    - **INNER JOIN**
+
+        * **Purpose:** Returns records that have matching values in *both* tables. If there's no match, the record is excluded.
+        * **Syntax:**`sql SELECT Columns FROM Table1 INNER JOIN Table2 ON Table1.MatchingColumn = Table2.MatchingColumn;`
+        * **Example:** Get employees and their department names.
+        `sql SELECT E.FirstName, E.LastName, D.DepartmentName FROM Employees E INNER JOIN Departments D ON E.DepartmentID = D.DepartmentID;` *(Only employees with a valid, matching DepartmentID in the Departments table will be shown.)*
+
+    - **LEFT JOIN (or LEFT OUTER JOIN)**
+
+        * **Purpose:** Returns all records from the *left* table (Table1) and the matched records from the *right* table (Table2). If there's no match in the right table, NULLs are returned for columns from the right table.
+        * **Syntax:**`sql SELECT Columns FROM Table1 LEFT JOIN Table2 ON Table1.MatchingColumn = Table2.MatchingColumn;`
+        * **Example:** Get all employees and their department names, even if an employee isn't assigned to a department yet.
+        `sql SELECT E.FirstName, E.LastName, D.DepartmentName FROM Employees E LEFT JOIN Departments D ON E.DepartmentID = D.DepartmentID;` *(All employees will be listed. If an employee's DepartmentID doesn't exist in Departments, DepartmentName will be NULL.)*
+
+    - **RIGHT JOIN (or RIGHT OUTER JOIN)**
+
+        * **Purpose:** Returns all records from the *right* table (Table2) and the matched records from the *left* table (Table1). If there's no match in the left table, NULLs are returned for columns from the left table.
+        * **Syntax:**`sql SELECT Columns FROM Table1 RIGHT JOIN Table2 ON Table1.MatchingColumn = Table2.MatchingColumn;`
+        * **Example:** Get all departments and the employees in them, even if a department has no employees.
+        `sql SELECT E.FirstName, E.LastName, D.DepartmentName FROM Employees E RIGHT JOIN Departments D ON E.DepartmentID = D.DepartmentID;` *(All departments will be listed. If a department has no employees, FirstName and LastName will be NULL.)*
