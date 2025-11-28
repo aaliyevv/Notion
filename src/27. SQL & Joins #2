@@ -47,3 +47,36 @@
         * **Syntax:**`sql SELECT Columns FROM Table1 RIGHT JOIN Table2 ON Table1.MatchingColumn = Table2.MatchingColumn;`
         * **Example:** Get all departments and the employees in them, even if a department has no employees.
         `sql SELECT E.FirstName, E.LastName, D.DepartmentName FROM Employees E RIGHT JOIN Departments D ON E.DepartmentID = D.DepartmentID;` *(All departments will be listed. If a department has no employees, FirstName and LastName will be NULL.)*
+
+    - **FULL JOIN (or FULL OUTER JOIN)**
+
+        * **Purpose:** Returns all records when there is a match in either the left or right table. It essentially combines the results of a LEFT JOIN and a RIGHT JOIN. If there's no match, NULLs are returned for columns from the table without a match.
+        * **Syntax:**`sql SELECT Columns FROM Table1 FULL OUTER JOIN Table2 ON Table1.MatchingColumn = Table2.MatchingColumn;`
+        * **Example:** Get all employees and all departments, showing matches where they exist and NULLs otherwise.
+        `sql SELECT E.FirstName, E.LastName, D.DepartmentName FROM Employees E FULL OUTER JOIN Departments D ON E.DepartmentID = D.DepartmentID;` *(Lists all employees (with NULL for department if no match) AND all departments (with NULL for employee details if no match).)Note: Some database systems like MySQL don't directly support `FULL OUTER JOIN`. You can achieve it using `UNION ALL` with a `LEFT JOIN` and a `RIGHT JOIN` (excluding overlaps).*
+
+    - **SELF JOIN**
+        - **Purpose:** To join a table to itself.
+        - **When to use:** When a table has a self-referential relationship (e.g. `Employees.ManagerID` refers to another `Employees.EmployeeID` in the table). **Aliases** are mandatory.
+- **Using Table Aliases in JOINS**
+
+    As seen in examples (e.g., `Employees E`, `Departments D`), aliases make queries shorter and more readable, especially when column names are the same across tables or when performing SELF JOINS.
+
+- **Joining Multiple Tables**
+
+    You can join more than two tables by adding more `JOIN` clauses.
+
+    - **Example:**
+
+        Suppose you have `Orders` table with `CustomerID` and `Customers` table with `CustomerID`.
+
+        SELECT C.CustomerName, E.FirstName AS EmployeeWhoHelped, O.OrderDate
+        FROM Orders O
+        INNER JOIN Customers C ON O.CustomerID = C.CustomerID
+        INNER JOIN Employees E ON O.EmployeeID = E.EmployeeID;
+
+- **Choosing the Right JOIN**
+    - **INNER JOIN:** When you only want records that have a match in *both* tables. (e.g., "Show me customers *who have placed orders*.")
+    - **LEFT JOIN:** When you want all records from the "left" table, plus any matching data from the "right". (e.g., "Show me *all customers*, and if they've placed orders, show those too.")
+    - **RIGHT JOIN:** When you want all records from the "right" table, plus any matching data from the "left". (e.g., "Show me *all products*, and if they've been ordered, show customer details.") Often, a RIGHT JOIN can be rewritten as a LEFT JOIN by swapping table order.
+    - **FULL JOIN:** When you want all records from *both* tables, matching them where possible. (e.g., "Show me all customers and all products, and link them if a customer ordered a product.")
