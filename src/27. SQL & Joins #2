@@ -1,0 +1,21 @@
+# #27. SQL & JOINS #2
+
+### **Module 1: SQL Fundamentals**
+
+### Examples
+
+- **`SELECT`, `FROM`, `WHERE`**
+    - Purpose: To filter records based on a condition.
+    - Syntax: `SELECT column1, column2 FROM TableName WHERE condition;`
+    - Example: `SELECT FirstName, LastName FROM Employees WHERE DepartmentID = 101;`
+- **`ORDER BY`**
+
+    * Purpose: To sort the result set.
+    * Syntax: `SELECT column1, column2 FROM TableName ORDER BY column1 [ASC|DESC];`
+    * Example: `SELECT FirstName, LastName FROM Employees ORDER BY LastName ASC;`
+
+- **Aggregate Functions & `GROUP BY`**
+
+    * Purpose: To perform calculations on groups of rows.
+    * Syntax: `SELECT column_group, AGGREGATE_FUNCTION(column_value) FROM TableName GROUP BY column_group;`
+    * Example: `SELECT DepartmentID, COUNT(EmployeeID) AS NumberOfEmployees FROM Employees GROUP BY DepartmentID;`
