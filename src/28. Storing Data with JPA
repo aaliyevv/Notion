@@ -46,3 +46,36 @@
 
         ![image.png](attachment:41154211-3b2c-4dec-97ab-57a867b62670:image.png)
 
+    - Update
+
+        JPA does not have a direct "update" method. When you find an object with find() and bring it into the context, it is put into a "managed" state. If you call any setter on that object within a transaction, JPA will automatically update the changes in the database when the transaction ends.
+
+        ![image.png](attachment:274beb1b-d5c5-4747-b858-86f94c0d725f:image.png)
+
+    - Delete
+
+        The remove() method removes the object from the context and from the database when the transaction ends.
+
+        ![image.png](attachment:3fb8880e-0d1a-45a3-95d7-b40fb9ec5c25:image.png)
+
+- Repository Usage (with Spring Data JPA)
+
+    Working directly with the `EntityManager` can sometimes be very detailed. **Spring Data JPA** simplifies this process dramatically.
+
+    **Repository** is a design pattern that encapsulates methods for working with databases.
+
+    In Spring Data JPA, you simply create an **interface** and extend it from `JpaRepository`. Spring automatically implements all the CRUD operations for you.
+
+- Example (Repo)
+
+    Create only an interface
+
+    ![image.png](attachment:6de6c81f-83be-49ca-a94c-503c7d605d21:image.png)
+
+- Example (Service)
+
+    ![image.png](attachment:a23566a1-8fb1-433e-866b-0be1eb5ec224:image.png)
+
+- Example (Repo with query)
+
+    ![image.png](attachment:dc027129-230b-4c39-a118-9d9dca83b6c1:image.png)
