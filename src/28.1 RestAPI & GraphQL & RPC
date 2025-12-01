@@ -1,0 +1,34 @@
+# #28.1 RestAPI & GraphQL & RPC
+
+- Overview
+
+    ![image.png](attachment:99a463b4-cffa-4a3e-b1d9-b03e133748c6:image.png)
+
+- **Conclusion**
+
+    There is no one-size-fits-all solution; choosing **REST**, **GraphQL**, or **gRPC** depends on your specific use case.
+
+    - **REST** for simplicity and caching.
+    - **GraphQL** for flexible, efficient queries and handling complex relationships.
+    - **gRPC** for performance-critical, low-latency systems with streaming capabilities.
+
+    Evaluate your system’s **scale**, **performance needs**, and **client requirements** to decide which is the best fit.
+
+- **What is GraphQL?**
+    - GraphQL is a **query language** for APIs, developed by **Meta**.
+    - It provides a **schema** of the API's data, allowing clients to request only the data they need.
+    - **GraphQL sits between clients** and backend services.
+    - It aggregates multiple resource requests into a **single query**.
+    - GraphQL supports:
+        - **Mutations**: Modify resources.
+        - **Subscriptions**: Notify clients of resource changes.
+
+### **GraphQL vs. REST vs. gRPC**
+
+- **Similarities:**
+    - All three (**GraphQL**, **REST**, and **gRPC**) are used to enable communication between clients and servers in a distributed system.
+    - All use **HTTP** (though gRPC can also use **HTTP/2**) to send requests and receive responses.
+    - All can return structured data, often in **JSON** format for REST and GraphQL, and in binary format for gRPC.
+- **Key Differences**
+
+    ![image.png](attachment:132a2806-afe2-4443-b1e8-fb2ea2b47df6:image.png)
