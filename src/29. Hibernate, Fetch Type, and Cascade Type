@@ -1,0 +1,41 @@
+# #29. Hibernate, Fetch Type, and Cascade Type
+
+- **Summary**
+    1. **CascadeType.PERSIST**: Save `User` and associated `Order` automatically.
+    2. **CascadeType.MERGE**: Update `User` and associated `Order`.
+    3. **CascadeType.REMOVE**: Delete `User` and associated `Order`.
+    4. **FetchType.LAZY**: Load `User` without loading `Order` until explicitly accessed.
+    5. **FetchType.EAGER**: Load `User` and `Order` together immediately.
+    6. **CascadeType.ALL**: Combination of all cascade types (save, update, delete).
+
+### Cascade
+
+- **CascadeType.PERSIST**
+
+    When `CascadeType.PERSIST` is applied, saving (persisting) the parent entity will also save its related child entities (like user and his order).
+
+    ![image.png](attachment:d41d9387-79c4-452a-b193-1fe9d84ebcff:image.png)
+
+    **Expected Behavior**: The `User` and its `Order` entities should be saved together in the database.
+
+- **CascadeType.MERGE**
+
+    When `CascadeType.MERGE` is applied, updating a parent entity will also update the child entities.
+
+    **Expected Behavior**: The `User` should be updated with the new name, and the `Order` should also be updated to reflect the new order details.
+
+- **CascadeType.REMOVE**
+
+    When `CascadeType.REMOVE` is applied, deleting the parent entity will also delete the child entities.
+
+    **Expected Behavior**: Both the `User` and the associated `Order` should be deleted from the database.
+
+    - **`orphanRemoval = true`**
+
+        `orphanRemoval = true`:If you simply do `author.getBooks().remove(book)` and then save the author (i.e. remove the book from the Author list, but do not call `bookRepository.delete()`, JPA will see that this Book is "orphaned" and will automatically delete it from the database.
+
+- **CascadeType.ALL**
+
+    This is a combination of all cascade types (`PERSIST`, `MERGE`, `REMOVE`, etc.). It means that any operation (save, update, delete) on the parent entity will also be applied to the child entities.
+
+    **Expected Behavior**: The `User` and all its associated `Order` entities should be created, updated, and deleted together.
