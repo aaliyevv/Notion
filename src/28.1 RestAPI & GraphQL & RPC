@@ -32,3 +32,53 @@
 - **Key Differences**
 
     ![image.png](attachment:132a2806-afe2-4443-b1e8-fb2ea2b47df6:image.png)
+
+- **Detailed Comparison**
+    - **REST**
+        - **Resource-Based**: Resources (such as books, users, etc.) are accessed via **URLs**.
+        - **HTTP Verbs**: Commonly uses HTTP methods like **GET**, **POST**, **PUT**, **DELETE**.
+        - **Caching**: Built-in caching support with **HTTP GET**.
+        - **Flexibility**: Limited, as the **API implementer** decides the structure of the response.
+        - **Drawbacks**
+            - Complex resource relationships (N+1 query problem) may require multiple requests for related resources.
+            - **Limited flexibility** in what data is returned (client can't specify specific fields).
+    - **GraphQL**
+        - **Schema-Based**: Clients send queries to the server based on a **GraphQL schema**, which defines the types and relationships.
+        - **Client Control**: Clients can request **exactly** the fields they need, preventing over-fetching or under-fetching of data.
+        - **Single Query**: Aggregates multiple resource requests into one query, reducing network overhead.
+        - **Drawbacks**
+            - **Heavier tooling** requirements on both client and server and **upfront investment**.
+            - **Caching complexity**, as GraphQL uses **HTTP POST**, making caching more difficult.
+            - **Risk of inefficiency** (e.g., expensive queries causing performance bottlenecks).
+            - Potential for **security risks** (overly broad queries, complex database hits).
+    - **gRPC**
+
+        **PC-Based**: Follows the **Remote Procedure Call (RPC)** pattern, where clients invoke methods directly on the server.
+
+        - **HTTP/2**: Utilizes **HTTP/2**, which provides built-in support for **streaming**, **bi-directional communication**, and **multiplexing**.
+        - **Binary Format**: Uses **Protocol Buffers** (Protobuf), a compact binary format that is more **efficient** than JSON for data transport.
+        - **Performance**: Highly optimized for **high-performance** systems, particularly for **low-latency** microservices.
+        - **Streaming Support**: Allows for **client-side**, **server-side**, and **bi-directional** streaming.
+        - **Drawbacks**
+            - **Higher tooling** and complexity (requires knowledge of **Protocol Buffers** and setting up gRPC).
+            - Less **human-readable** format compared to JSON (due to binary data format).
+            - Limited caching support out-of-the-box.
+            - **Limited** support for browser clients (mostly server-to-server communication).
+
+### **When to Use REST, GraphQL, or gRPC?**
+
+- **Use REST when:**
+    - The API is **simple** and doesn’t involve complex data relationships.
+    - **Caching** is important, especially for GET requests.
+    - You want to use **lightweight tooling** (e.g., cURL, browser) for making requests.
+    - A well-established, familiar pattern with widespread support is needed.
+- **Use GraphQL when:**
+    - **Client flexibility** is crucial—when clients need to define exactly which data they want.
+    - Your API has complex relationships, and you want to **minimize over-fetching** and **under-fetching**.
+    - You need to **aggregate multiple resources** into a single query.
+    - **Subscriptions** are needed to provide real-time updates on data changes.
+- **Use gRPC when:**
+    - **High performance** and **low-latency** communication is required.
+    - You need to handle **real-time streaming** data or bi-directional communication.
+    - Your API needs to efficiently handle **microservices** architecture with internal service-to-service communication.
+    - **Binary data** (Protocol Buffers) needs to be transferred quickly and efficiently.
