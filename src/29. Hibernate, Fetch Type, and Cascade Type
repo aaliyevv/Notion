@@ -39,3 +39,45 @@
     This is a combination of all cascade types (`PERSIST`, `MERGE`, `REMOVE`, etc.). It means that any operation (save, update, delete) on the parent entity will also be applied to the child entities.
 
     **Expected Behavior**: The `User` and all its associated `Order` entities should be created, updated, and deleted together.
+
+
+### FetchType
+
+- **FetchType.LAZY**
+
+    We will load a `User` without loading the associated `Order` entities unless they are explicitly accessed.
+
+    **Expected Behavior**: The response should only contain the `User` details without the `Order` entities (since `FetchType.LAZY` means orders are not fetched automatically).
+
+- **FetchType.EAGER**
+
+    When `FetchType.EAGER` is applied, related entities are fetched immediately when the parent entity is loaded.
+
+    **Expected Behavior**: The response should include both the `User` details and the associated `Order` entities (since `FetchType.EAGER` means the orders are eagerly loaded).
+
+- **Default FetchType**
+
+    If a right side is a little bit, then it treat as an eager type, if more treats as a lazy type as a default mode.
+
+    ![image.png](attachment:63f113f4-fe6b-4fa1-9b93-398cf2587ba0:image.png)
+
+- Fetching data
+
+    fetch = FetchType.LAZY - I need department info not dependent datas such as employees. (OneToMany)
+
+    fetch = FetchType.EAGER - fetches department and its dependents. (most usage: @ManyToOne, @OneToOne)
+
+
+### Mentor Notes
+
+- Key Concept: Owning Side
+
+    In bidirectional relationships (for example, both `Author` has a `Book` list and `Book` has an `Author` object), JPA needs to know which side controls the relationship.
+
+    - **Owning Side:** The side that corresponds to the table in the database that holds the foreign key. Usually, the `@ManyToOne` side is the owner. This side creates and deletes the relationship.
+        - **`@JoinColumn` Annotation Parameters**
+            - **Explanation:** This annotation indicates that we are the "owner" of the relationship and that the foreign key is in this table (the `Book` table).
+            - **Inverse Side:** The side that does not hold the foreign key. This side simply "mirrors" the relationship and uses the `mappedBy` parameter.
+    - Inverse Side: The side that does not hold the foreign key. This side simply "mirrors" the relationship and uses the mappedBy parameter.
+
+    @OneToMany (mappedBy = “department”) - there is a dependent side managed by department. Without this parameter, JPA will assume there are two relationships and try to create an intermediate table (author_books), which is incorrect.
