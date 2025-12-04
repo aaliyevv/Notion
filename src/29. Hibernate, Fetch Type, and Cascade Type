@@ -81,3 +81,57 @@
     - Inverse Side: The side that does not hold the foreign key. This side simply "mirrors" the relationship and uses the mappedBy parameter.
 
     @OneToMany (mappedBy = “department”) - there is a dependent side managed by department. Without this parameter, JPA will assume there are two relationships and try to create an intermediate table (author_books), which is incorrect.
+
+- Example: `@OneToMany`
+
+    ### `Author.java` (Inverse Side)
+
+    ![image.png](attachment:1527e91f-25e9-49eb-ba15-4a5501e5b29f:image.png)
+
+    ### `Book.java` (Owning Side)
+
+    ![image.png](attachment:f25ce3dc-ba2e-4d21-83cb-4931b47a0b8f:image.png)
+
+- Example: `@OneToOne`
+
+    ### `User.java` (Inverse Side)
+
+    ![image.png](attachment:5294c6dd-a4c2-409a-9eb0-9f1678a682b5:image.png)
+
+    // User-dən profili ayırsaq (user.setProfile(null)), profil bazadan silinsin
+
+    ### `UserProfile.java` (Sahib Tərəf / Owning Side)
+
+    ![image.png](attachment:2b316b0c-56ab-4074-83be-f8a1e05924e3:image.png)
+
+- Example: `@ManyToMany`
+
+    This relationship cannot be established directly between two tables. A third Join Table is required. This table stores the primary keys of both tables as foreign keys.
+
+    ### `Student.java` (Owning Side)
+
+    ![image.png](attachment:7a6a8ef7-47c5-43e7-aabb-6afcd3be0d25:image.png)
+
+    **`inverseJoinColumns = @JoinColumn(name = "course_id")`**: Specifies the name of the column in the intermediate table that refers to the "opposite" side (i.e. `Course`).
+
+    ![image.png](attachment:93f34a68-d8a8-4347-bb6b-4bd94192c070:image.png)
+
+    **`mappedBy = "courses"`**: Required. It means "I don't own this relationship. The relationship is managed by the `courses` field in the `Student` class. All the intermediate table configuration is there.”
+
+- Relation
+    - class → table
+    - field → column
+    - `@Id` → primary key
+    - `@GeneratedValue` → auto-increment
+- How to treat dependent datas
+
+    cascade = CascadeType.ALL (instead of all we can write merge - update all dependent classes, persist - save dependets also, remove - delete dependents). If we want to delete department id I mean main part it gives us error because of dependent datas are available. First of all, we should delete dependent datas, that is why we use .ALL .
+
+- Best Practices
+    1. **`@OneToOne`:**
+    - Always try to use `fetch = FetchType.LAZY`.
+    - `cascade = CascadeType.ALL` and `orphanRemoval = true` are very useful for parent-child relationships (e.g. `UserUserProfile`).
+    1. **`@ManyToMany`:**
+    - Always use `fetch = FetchType.LAZY` (the default).
+    - Do not use `CascadeType.REMOVE` or `ALL`, as this can cause unexpected data loss.
+    - **Alternative:** Often, instead of using the `@ManyToMany` relationship directly, it is better to create the intermediate table as an Entity (`Enrollment`). This allows us to add additional data (e.g. `registration_date`, `grade`) to the intermediate table. In this case, the relationship becomes two `@OneToMany` relationships ( `Student` -> `Enrollment` and `Course` -> `Enrollment`).
