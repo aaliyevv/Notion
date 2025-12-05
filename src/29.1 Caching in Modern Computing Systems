@@ -1,0 +1,66 @@
+# **#29.1 Caching in Modern Computing Systems**
+
+- **Key points**
+
+    **Caching Levels**:
+
+    - **Client-Side**: Browser cache, controlled via HTTP headers.
+    - **Server-Side**: In-memory caches like Redis and Memcached, with considerations for TTL and eviction policies.
+    - **CDN Caching**: Distributes content globally, uses edge caching and cache invalidation strategies.
+    - **Database Caching**: Reduces database load via query caching and read replicas.
+- **Overview**
+
+    ![image.png](attachment:6c23e1b2-e6d5-4ecf-8bd9-67ab2e5bfcef:image.png)
+
+    ![image.png](attachment:d8240fdf-b7f7-48b4-91a0-8b37ee28d715:image.png)
+
+    Size of cache and speed is inversely proportional
+
+- **Caching**
+
+    Caching is a fundamental concept in system design that involves storing copies of data in a temporary storage area, or cache, so that future requests for that data can be served faster. By keeping frequently accessed data closer to the requester, caching reduces latency, decreases bandwidth usage, and improves overall system performance.
+
+- **Why is Caching Important?**
+    - **Performance Improvement**: Reduces data retrieval time.
+    - **Scalability**: Helps systems handle higher loads without degradation.
+    - **Cost Efficiency**: Lowers resource consumption by reducing redundant processing.
+
+### Types of Caching
+
+Caching can be implemented at various layers within a system.
+
+- **Client-Side Caching**
+
+    Client-side caching occurs on the user's device, such as a web browser. It allows for quicker data retrieval without the need to make network requests to the server for every piece of data.
+
+    Uses **HTTP cachce headers** to determine when to cache and when to fetch fresh content. **HTTP cache headers** like `Cache-Control`, `Expires`, and `ETag` inform the browser and intermediate caches about how and when to cache content. They control whether content can be cached, for how long, and how to validate cached content.
+
+- **Server-Side Caching**
+
+    Server-side caching involves storing data on the server to quickly serve future requests.
+
+    - In-Memory Caching
+
+        caching stores data in RAM for rapid access, faster read/write operations compared to disk-based storage.
+
+        **Use Cases**: Session storage, frequently accessed data, temporary data.
+
+        - **Selecting the Right Tool**: Depends on use case—Redis for complex data types, Memcached for simple key-value storage.
+        - Memcached
+
+            A high-performance, distributed memory caching system.
+
+            - **Features**:
+                - Simple key-value store.
+                - Ideal for caching database query results, API calls.
+            - **Limitations**:
+                - No persistence; data is lost on restart.
+                - Lacks advanced data structures.
+        - Redis (more recommended)
+
+            An in-memory data structure store, used as a database, cache, and message broker.
+
+            - **Features**:
+                - Supports various data structures (strings, hashes, lists, sets, sorted sets).
+                - Persistence options available.
+                - Pub/Sub capabilities.
