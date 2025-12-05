@@ -64,3 +64,40 @@ Caching can be implemented at various layers within a system.
                 - Supports various data structures (strings, hashes, lists, sets, sorted sets).
                 - Persistence options available.
                 - Pub/Sub capabilities.
+
+        Considerations:
+
+        - TTL (Time-to-Live)
+            - **Definition**: The duration for which data remains valid in the cache.
+            - **Purpose**: Ensures outdated data doesn't persist indefinitely.
+            - **Implementation**: Set per-key or globally in caching systems like Redis and Memcached.
+
+            A longer TTL increases cache hits but may serve stale data.
+
+        - Eviction Policies
+
+            Eviction policies determine which data to remove when the cache is full.
+
+            - **LRU (Least Recently Used)**:
+                - Removes items that haven't been accessed recently.
+            - **LFU (Least Frequently Used)**:
+                - Removes items that are least often accessed.
+            - **FIFO (First In, First Out)**:
+                - Removes the oldest added items.
+- **CDN Caching**
+
+    CDN (Content Delivery Network) caching involves storing content on distributed servers around the globe.
+
+    - Content Delivery Networks
+        - **Definition**: A network of geographically dispersed servers that deliver content based on the user's location.
+        - **Purpose**: Reduces latency and improves load times for users worldwide.
+        - **Providers**: Akamai, Cloudflare, Amazon CloudFront.
+- **Database Caching**
+
+    Database caching reduces the load on the database by storing query results.
+
+    - **Query Caching**: Storing the results of database queries.
+    - **Materialized Views**: Precomputed views that store query results (you gain result after computing and store it.).
+- **Conclusion**
+
+    Caching is a vital strategy in system design to enhance performance, scalability, and user experience. By understanding the different types of caching and their appropriate use cases, engineers can design efficient systems that handle high loads and provide fast responses.
