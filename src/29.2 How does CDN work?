@@ -1,0 +1,19 @@
+# #29.2 How does CDN work?
+
+- Definition
+
+    A content delivery network (CDN) refers to geographically distributed servers (also called edge servers) that provide fast delivery of static and dynamic content. Let’s take a look at how it works.
+
+- Example text
+
+    Suppose Bob who lives in New York wants to visit an eCommerce website that is deployed in London. If the request goes to servers located in London, the response will be quite slow. So we deploy CDN servers close to where Bob lives, and the content will be loaded from the nearby CDN server.
+
+- Example picture
+
+    ![image.png](attachment:606015da-37a9-4248-bc3c-8b05ccd3b74b:image.png)
+
+- Explanation of picture
+    1. Bob types in [www.myshop.com](http://www.myshop.com/) in the browser. The browser looks up the domain name in the local DNS cache.
+    2. If the domain name does not exist in the local DNS cache, the browser goes to the DNS resolver to resolve the name. The DNS resolver usually sits in the Internet Service Provider (ISP).
+    3. The DNS resolver recursively resolves the domain name. Finally, it asks the authoritative name server to resolve the domain name.
+    4. If we don’t use CDN, the authoritative name server returns the IP address for [www.myshop.com](http://www.myshop.com/). But with CDN, the authoritative name server has an alias pointing to [www.myshop.cdn.com](http://www.myshop.cdn.com/) (the domain name of the CDN server).
