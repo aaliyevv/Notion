@@ -1,0 +1,23 @@
+# #30. **Reverse Proxy, API Gateway, Load Balancer**
+
+- **Summary**
+    
+    Reverse proxies, API gateways, and load balancers play essential roles in ensuring that applications handle high volumes of traffic reliably and securely. By understanding their unique functions and how they work together, you can design robust web-scale applications.
+    
+- **Overview**
+    
+    ![image.png](attachment:227ff9f0-7999-4685-85ba-509c62c8222c:image.png)
+    
+- **Reverse Proxy**
+    
+    **Role**: Acts as an intermediary between client requests and backend servers.
+    
+    - **Functionality:**
+        - **Forwards Requests**: Receives client requests and forwards them to the appropriate backend server.
+        - **Returns Responses**: Retrieves the server’s response and sends it back to the client.
+    - **Benefits**
+        - **Increased Security:** Hides backend server details from clients. Manages SSL (**Secure Sockets Layer**) connections for secure data transfer.
+        - **Load Distribution & Caching**: Distributes traffic across servers. Reduces load and improves response times.
+        
+    
+    **Use Case:** Even with a single server, a reverse proxy can offer a public-facing entry point, manage requests, and increase security.
