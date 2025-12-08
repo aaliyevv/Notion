@@ -45,3 +45,11 @@
         - Can spread incoming requests across multiple servers using different rules. For example, **round-robin** sends each new request to the next server in turn, **IP hash** sends the same client IP to the same server, and **least connections** sends traffic to the server currently handling the fewest active requests.
 
     **Use Case**: Ensures reliability and high availability in web applications, maintaining performance during high traffic loads.
+
+- **Examples**
+    - **Amazon Web Services (AWS)**
+        - **Amazon API Gateway**: Acts as a unified front for client requests, routing them to appropriate backend services.
+        - **Elastic Load Balancer (ELB)**: Fronts each service, ensuring efficient request distribution across servers.
+    - **NGINX**
+        - **Load Balancer**: Distributes requests across multiple backend servers.
+        - **Reverse Proxy**: Caches responses, handles SSL, and adds security layers.

@@ -1,0 +1,13 @@
+# #31. NoSQL Databases (MongoDB)
+
+### Introduction to MongoDB, document databases, data modeling, and basic operations.
+
+- SQL vs. NoSQL
+    - **RDBMS** **normalizes** data and stores it in different tables, then combines these pieces using `JOIN`. **Data Integrity (ACID)** is a priority.
+    - **MongoDB** **denormalizes** data and stores it in a single document. This allows you to retrieve all the necessary information with a single query. **Flexibility** and **Scalability** are a priority.
+
+    This explains why MongoDB is ideal for faster development and large, variable data.
+
+- What is NoSQL
+    - **NoSQL** stands for "Not Only SQL." It refers to databases that provide flexible schemas, horizontal scaling, and are designed for distributed data storage.
+    - NoSQL databases are particularly well-suited for handling large volumes of data and real-time web applications.
