@@ -21,3 +21,27 @@
         
     
     **Use Case:** Even with a single server, a reverse proxy can offer a public-facing entry point, manage requests, and increase security.
+
+- **API Gateway**
+
+    **Role**: Serves as a single entry point for managing multiple backend services, particularly in microservices architectures.
+
+    **Functionality:** Routing (clients<>services), Authentication & Authorization, Monitoring (service), Rate Limiting (control overload).
+
+    **Use Case:** Essential for microservices, where managing multiple services with a single interface enhances efficiency and security.
+
+- **Reverse Proxy** **vs.** **API Gateway**
+
+    A **reverse proxy** primarily forwards and load-balances client requests to backend servers while hiding those servers and handling things like SSL and caching.
+
+    An **API Gateway** is a specialized reverse proxy for microservices that also adds API-specific features like authentication, rate limiting, and per-service routing and monitoring.
+
+- **Load Balancer**
+
+    **Role**: Distributes incoming network requests across backend servers to ensure high availability.
+
+    - **Functionality**:
+        - Directs client requests to healthy (adds or removes servers based on traffic demand) servers only.
+        - Can spread incoming requests across multiple servers using different rules. For example, **round-robin** sends each new request to the next server in turn, **IP hash** sends the same client IP to the same server, and **least connections** sends traffic to the server currently handling the fewest active requests.
+
+    **Use Case**: Ensures reliability and high availability in web applications, maintaining performance during high traffic loads.
