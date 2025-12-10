@@ -37,3 +37,31 @@
     - **Replication & Sharding**:
         - **Replication**: For high availability, MongoDB can replicate data across multiple servers.
         - **Sharding**: For horizontal scaling, data is partitioned across different machines.
+- MongoDB Shell
+    - Use the MongoDB shell (`mongosh`) for command-line interaction.
+    - Basic commands include:
+        - `show dbs`
+        - `use <database>`
+        - `show collections`
+- Data Modeling in MongoDB
+    - **Denormalization**: Embed related data within a single document to avoid joins.
+    - **Normalization**: In some cases, reference related documents to reduce data duplication.
+    - **Data Access Patterns**: Model your data based on how your application accesses it.
+    - **Embedding vs. Referencing**:
+        - **Embedding**: Good for one-to-few relationships.
+        - **Referencing**: Suitable for one-to-many or many-to-many relationships.
+    - Example
+
+        ![image.png](attachment:6d088940-0343-43e5-affa-73490e914bdb:image.png)
+
+- Embedded Documents
+
+    **Embedded Document** means that data that belongs to a data object but would traditionally be stored in a separate table (e.g. address, comment, order details) is stored **directly within (inside)** the main document.
+
+    This is called **Denormalization** (grouping data together) as opposed to **Normalization** (breaking up data to prevent duplication) in Relational DB.
+
+    - Example:
+
+        ![image.png](attachment:904d5c1b-1eed-4d69-9ae5-9522695b0fc7:image.png)
+
+        ![image.png](attachment:79ac350d-239d-4878-92dc-c2b4dab34660:image.png)
