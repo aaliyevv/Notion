@@ -65,3 +65,40 @@
         ![image.png](attachment:904d5c1b-1eed-4d69-9ae5-9522695b0fc7:image.png)
 
         ![image.png](attachment:79ac350d-239d-4878-92dc-c2b4dab34660:image.png)
+
+- Basic Operations (CRUD) with MongoDB
+    - Create (Insert)
+        - **Single Document Insert**:
+
+            ![image.png](attachment:281860cd-959b-4672-8a7a-bb0a45658c45:image.png)
+
+        - **Multiple Documents Insert**:
+
+            ![image.png](attachment:d6eb9190-d217-40f9-aed8-7cc89889332c:image.png)
+
+    - Read (Query)
+        - **Find All Documents**: db.users.find();
+        - **Find with Filter**: db.users.find({ age: { $gte: 30 } });
+    - Update
+        - **Update a Single  and multiple Document**:
+
+
+            ![image.png](attachment:e2b3c83f-8389-4fd8-99cf-4b290efa0f82:image.png)
+
+            ![image.png](attachment:8ca8dbae-7673-4d03-b99b-fd5b64f2dbe6:image.png)
+
+    - Delete
+        - **Delete a Single Document**:
+
+            ![image.png](attachment:ddf6981b-df95-4e1f-9931-e267acaa4765:image.png)
+
+        - **Delete Multiple Documents**:
+
+            ![image.png](attachment:79f1e3d8-6fa6-4a21-868c-c62dd24c9b5d:image.png)
+
+- Integrating MongoDB with Java/Spring
+    - **Dependency Management**: Add the Spring Data MongoDB dependency to your `pom.xml` or `build.gradle`.
+
+        ```xml
+        implementation("org.springframework.boot:spring-boot-starter-data-mongodb:3.4.4")
+        ```
