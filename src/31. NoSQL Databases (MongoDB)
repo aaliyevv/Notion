@@ -137,3 +137,50 @@ Different from SQL, NoSQL store data not table-based, but related in some ways: 
 - `regex` examples
 
     ![image.png](attachment:b5785265-baf6-451a-b507-f345f841d7a4:image.png)
+
+- Addition: Creating Query Methods
+
+    The most powerful aspect of using `MongoRepository` is that in addition to these ready-made methods, you can have Spring Data automatically generate queries for you by simply typing the method name correctly.
+
+    | Metodun Adı | Sorğu Məntiqi |
+    | --- | --- |
+    | `findByAge(int age)` | Yaşı verilən rəqəmə **bərabər** olanları tap. |
+    | `findByNameAndAge(String name, int age)` | Adı və yaşı verilən şərtə uyğun olanları tap. |
+    | `findByAgeGreaterThan(int age)` | Yaşı verilən rəqəmdən **böyük** olanları tap. |
+    | `findByStatusOrderByAgeDesc(String status)` | Statusu verilən dəyərə bərabər olanları tap və onları yaşa görə **azalan** (descending) qaydada sırala. |
+    | `findByNameStartingWith(String prefix)` | Adı verilən hərflə **başlayanları** tap (Regex istifadə edir). |
+- How to apply on Spring
+    - model
+
+        Collectiona cixartmaq istediyimiz classa:
+
+        Instead of @Entity, we write: @Document(collection=””)
+
+        No need @GeneratedType…id only @Id is enough
+
+    - repository
+
+        extend from MongoRepository
+
+    - build.gradle
+
+        implementation 'org.springframework.boot:spring-boot-starter-data-mongodb’
+
+    - application.yml
+
+        server:
+        port: 8081
+
+        spring:
+        data:
+        mongodb:
+        uri: mongodb://localhost:27017/survey_db
+
+- Id
+
+    mix of digits and letters:
+
+    - **Timestamp (4 bytes):** A timestamp indicating when the document was created.
+    - **Machine ID (3 bytes):** The identifier of the computer (server) on which the document was created.
+    - **Process ID (2 bytes):** The identifier of the process on that computer that created the Object.
+    - **Counter (3 bytes):** A counter to distinguish it from other documents created by the same process.
