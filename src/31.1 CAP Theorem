@@ -36,3 +36,34 @@
 
     Problem: If availability is prioritized, a customer could withdraw the full balance from both ATMs,
     leading to a negative balance once the network reconnects.
+
+- **Example 2: Social Media**
+
+    In a social media platform, the CAP theorem affects features like commenting during network partition.
+    **During Partition i**f users are commenting on the same post, comments might not sync immediately.
+
+    - **Consistency Priority**: Block commenting until the network is restored.
+    - **Availability Priority**: Allow comments with slight inconsistencies visible to users.
+
+    Most social networks prioritize **availability**, as minor inconsistencies are acceptable to improve
+    user experience.
+
+- **Real-World Complexity**
+
+    CAP assumes 100% consistency or 100% availability, which isn’t practical. Real systems often operate
+    with degrees of both consistency and availability.
+
+    1. **Hybrid Solutions**:
+
+        Example: In the bank example, ATMs might allow balance inquiries or small withdrawals during a
+        partition but block large transactions.
+
+    2. **Data Reconciliation**:
+
+        After network issues are resolved, reconciling data across nodes can be challenging, especially
+        with complex data structures like collaborative documents (e.g., Google Docs).
+
+- **CAP Theorem Importance**
+
+    It’s a valuable model for thinking through trade-offs in distributed systems, particularly during
+    network failures.
