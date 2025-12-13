@@ -102,3 +102,38 @@
         ```xml
         implementation("org.springframework.boot:spring-boot-starter-data-mongodb:3.4.4")
         ```
+
+    - **Configuration**: Configure the connection in your `application.properties`:
+
+        spring.data.mongodb.uri=mongodb://localhost:27017/your-database
+
+    - **Repository Pattern**: Create repository interfaces to handle CRUD operations.
+
+        ![image.png](attachment:a28860d7-4810-45f8-a1bb-839932ccf540:image.png)
+
+
+### Mentor Notes:
+
+Different from SQL, NoSQL store data not table-based, but related in some ways: **Document, Key-Value (**Redis**), Graph (**nodes, edges**), Column-Family (**Cassandra**)**
+
+- Basic MongoDB Shell Commands
+
+    ![image.png](attachment:40688258-a022-429e-b503-576c5d99f9a6:image.png)
+
+    | **Çoxlu Yazmaq** | `db.users.insertMany([{name: "A", age: 20}, {name: "B", age: 30}])` |
+    | --- | --- |
+- Comparison of the Terms Relational DB (SQL) and MongoDB
+
+
+    | **Verilənlər Bazası** (`Database`) | **Verilənlər Bazası** (`Database`) |
+    | --- | --- |
+    | **Cədvəl** (`Table`) | **Kolleksiya** (`Collection`) |
+    | **Sətir** (`Row` / Qeyd) | **Sənəd** (`Document`) |
+    | **Sütun** (`Column` / Sahə) | **Sahə** (`Field` / Açar-Dəyər Cütü) |
+    | **İndeks** (`Index`) | **İndeks** (`Index`) |
+    | **Əlaqə (`JOIN`)** | **Gömülmüş Sənədlər** (`Embedded Documents`) və ya **$lookup** |
+    | **İlkin Açar (`Primary Key`)** | **`_id` Sahəsi** |
+    | **Sxem (`Schema`)** | **Sxemsiz (`Schema-less`)** |
+- `regex` examples
+
+    ![image.png](attachment:b5785265-baf6-451a-b507-f345f841d7a4:image.png)
