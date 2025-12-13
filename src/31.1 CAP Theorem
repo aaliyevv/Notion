@@ -1,0 +1,38 @@
+# #31.1 CAP Theorem
+
+### **Consistency (C), Availability (A), Partition Tolerance (P)**
+
+- **Main idea**
+
+    The **CAP theorem** is a core concept in computer science, particularly in distributed systems,
+    explaining the trade-offs among:
+
+    - **Consistency** - All nodes in the system have the same view of the data. If one client updates
+    data, all other clients instantly see this update.
+    - **Availability** - The system is always available to respond to user requests. Even if some nodes
+    are down, requests are handled.
+    - **Partition** **Tolerance** - Continues to operate despite communication breaks between nodes
+    (due to network failures).
+
+    This theorem helps us understand the limitations and trade-offs required in designing distributed
+    systems.
+
+    ![image.png](attachment:808d1c5e-3977-4ab2-8fe2-34b5a3040387:image.png)
+
+- **Network partition**
+
+    During a partition, the system must **choose** between:
+
+    - **Consistency** (ensuring all data views are the same across nodes)
+    - **Availability** (keeping the system responsive for all requests)
+- **Example: Bank**
+
+    Two ATMs connected over a network, operations (deposit, withdraw, and check balance), goal (the
+    balance should never go below zero). During **Network Partition t**he bank can choose:
+
+    - **Consistency**: Block all transactions until the partition is resolved. This ensures no data
+    inconsistencies but makes the ATMs **unavailable**.
+    - **Availability**: Allow transactions during the partition, risking **data inconsistency**.
+
+    Problem: If availability is prioritized, a customer could withdraw the full balance from both ATMs,
+    leading to a negative balance once the network reconnects.
