@@ -4,15 +4,18 @@
 
     `Clients (Web/Mobile) → API Gateway → Microservices`
 
-    API Gateway is a single entry point for all clients (Web, Mobile, External Apps) in microservice architecture. It centralizes functions such as routing, security, and monitoring.
+    API Gateway is a single entry point for all clients (Web, Mobile, External Apps) in microservice
+    architecture. It centralizes functions such as routing, security, and monitoring.
 
-    Example: gw - 8080, payment - 8081, user - 8082, warehouse - 8083. Client sends all requests to 8080 port and api gateway devides request according to requests.
+    Example: gw - 8080, payment - 8081, user - 8082, warehouse - 8083. Client sends all requests to
+    8080 port and api gateway devides request according to requests.
 
     ![image.png](attachment:956d407b-d05d-48a3-a3c4-1e1892cbfd52:image.png)
 
 - **Microservice**
 
-    Microservice architecture is a programming style that divides large applications into smaller, independent services. Each service:
+    Microservice architecture is a programming style that divides large applications into smaller,
+    independent services. Each service:
 
     - **Runs independently**: Has its own database and business logic
     - **Connects**: Communicates via APIs
@@ -27,3 +30,49 @@
     | Single database | Each service has its own database |
     | Difficult to scale |  Easy to scale |
     | Single language/technology |  Different technologies |
+- Spring Cloud Gateway
+
+     is an API Gateway solution in a microservice architecture, provided by Spring.
+
+- Key Responsibilities & Architecture
+
+
+    | **Responsibility** | **Description** |
+    | --- | --- |
+    | **Routing** | Directs traffic based on rules. |
+    | **Security** | Centralizes authentication & authorization. |
+    | **Resilience** | Manages failures with circuit breakers & retries. |
+    | **Observability** | Centralizes logging, tracing, and metrics. |
+- Core Concept
+
+    Spring Cloud Gateway is built on 3 main "pillars". It is important to understand them:
+
+    - 1. Route
+
+        The cornerstone of the Gateway. A route consists of:
+
+        - **ID:** The unique name of the route (e.g. `department-service`).
+        - **URI:** The target address where the request will go (e.g. `http://localhost:9090`).
+        - **Predicate & Filter:** Conditions and Operations.
+    - 2. Predicate
+
+        Answers the question "Should I let this request in or not?"
+
+        - **Path:** Does the URL start with `/api/departments`?
+        - **Method:** Is the request a `POST` method?
+        - **Time:** Did the request arrive during business hours?
+    - 3. Filter
+
+        To make changes to the request **before** it reaches the target or **after** the response
+        returns to the client.
+
+        - Add `Header` to the request.
+        - Change the URL (`StripPrefix`).
+        - Measure the duration of the request.
+- Gateway Building Blocks
+    - **Route**: The fundamental unit. Contains an ID, a destination URI, a set of Predicates, and a
+    set of Filters.
+    - **Predicate**: A condition to match an HTTP request (e.g., by path, method, or header). If it
+    matches, the route is processed.
+    - **Filter**: Logic to modify the request or response before or after sending it to the destination
+    URI.
