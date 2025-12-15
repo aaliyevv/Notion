@@ -70,12 +70,12 @@
         - Change the URL (`StripPrefix`).
         - Measure the duration of the request.
 - Gateway Building Blocks
-    - **Route**: The fundamental unit. Contains an ID, a destination URI, a set of Predicates, and
-    a set of Filters.
+    - **Route**: The fundamental unit. Contains an ID, a destination URI, a set of Predicates, and a
+    set of Filters.
     - **Predicate**: A condition to match an HTTP request (e.g., by path, method, or header). If it
     matches, the route is processed.
-    - **Filter**: Logic to modify the request or response before or after sending it to the
-    destination URI.
+    - **Filter**: Logic to modify the request or response before or after sending it to the destination
+    URI.
 - Running the Project
     1. **Start Microservice (Port 8081):**Bash
 
@@ -112,3 +112,56 @@
     Distributes requests across multiple instances of a service registered with a discovery server.
 
     ![image.png](attachment:0315cdd7-9afc-4371-b416-30eac595a4d3:image.png)
+
+- Common Issues
+    - **404 Not Found**: Check your `Path` predicate and `StripPrefix` filter logic. Ensure route order
+    is correct (most specific first).
+    - **CORS Errors**: Configure `spring.cloud.gateway.globalcors` in your YAML.
+    - **503 Service Unavailable**: Ensure backend services are running and reachable. If using `lb://`,
+    check service discovery registration.
+
+### Mentor Notes
+
+- config → GatewayConfig
+
+    ![image.png](attachment:689bacda-6828-4cfc-941a-07eb7383b2a0:image.png)
+
+- application.yaml
+    - code
+
+        server:
+        port: 9091
+
+        spring:
+        application:
+        name: api-gateway
+        cloud:
+        gateway:
+        routes:
+        - id: department-service
+        uri: [http://localhost:9090](http://localhost:9090/)
+        predicates:
+        - Path=/api/departments/**
+
+        ```
+            - id: employee-service
+              uri: <http://localhost:9090>
+              predicates:
+                - Path=/api/employee/**
+        ```
+
+        logging:
+        level:
+        org.springframework.cloud.gateway: TRACE
+        org.springframework.http.server.reactive: DEBUG
+        org.springframework.web.reactive: DEBUG
+        reactor.netty: DEBUG
+
+
+    We send requests to 9091 (as a api gateway) and it forwards to port based on predicates info.
+
+    ![image.png](attachment:3b9f3a92-0c78-414a-8416-051f1d63f94d:image.png)
+
+- build.gradle
+
+    ![image.png](attachment:b5789c3e-51fd-4dce-8711-cf2226412e53:image.png)
