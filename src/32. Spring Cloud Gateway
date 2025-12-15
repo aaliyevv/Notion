@@ -70,9 +70,45 @@
         - Change the URL (`StripPrefix`).
         - Measure the duration of the request.
 - Gateway Building Blocks
-    - **Route**: The fundamental unit. Contains an ID, a destination URI, a set of Predicates, and a
-    set of Filters.
+    - **Route**: The fundamental unit. Contains an ID, a destination URI, a set of Predicates, and
+    a set of Filters.
     - **Predicate**: A condition to match an HTTP request (e.g., by path, method, or header). If it
     matches, the route is processed.
-    - **Filter**: Logic to modify the request or response before or after sending it to the destination
-    URI.
+    - **Filter**: Logic to modify the request or response before or after sending it to the
+    destination URI.
+- Running the Project
+    1. **Start Microservice (Port 8081):**Bash
+
+        `./gradlew run -PmainClass=com.ltclab.microservice.UserServiceApplication`
+
+    2. **Start Gateway (Port 8080):**Bash
+
+        `./gradlew run -PmainClass=com.ltclab.Main`
+
+    3. **Test the Gateway:**Bash
+
+        `# Request is sent to localhost:8080 and routed to localhost:8081
+        curl http://localhost:8080/api/users`
+
+- Configuration Examples
+
+    Routes can be configured via YAML (preferred) or Java code.
+
+    ![image.png](attachment:cb620f56-f597-400f-bc14-eff116bb449a:image.png)
+
+    ![image.png](attachment:00071bdb-78ff-4bfd-895b-8c5c3dc14b44:image.png)
+
+- Advanced Features & Filters (Examples)
+
+    Protects the system from cascading failures. If the target service is down, it forwards the
+    request to a fallback URI.
+
+    ![image.png](attachment:1535b2f6-92d8-4e40-a608-61eec85f423a:image.png)
+
+    Controls the frequency of requests to prevent abuse. Often implemented with Redis.
+
+    ![image.png](attachment:84c3431d-f770-446f-96ae-8923fa71e752:image.png)
+
+    Distributes requests across multiple instances of a service registered with a discovery server.
+
+    ![image.png](attachment:0315cdd7-9afc-4371-b416-30eac595a4d3:image.png)
