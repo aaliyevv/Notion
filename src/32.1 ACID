@@ -25,3 +25,38 @@
         occurs in the code), all changes are canceled (Rollback).
 
         Example:Transfer money from a bank account
+
+    - Consistency
+
+        A transaction must bring the database from one valid state to another. All constraints,
+        cascading rules, and triggers defined for the database must be preserved.
+
+        - Example:
+
+            If the database has a constraint that the "Age" column cannot be negative, and an attempt
+            is made to write a negative number to it as a result of a transaction, the transaction
+            should not be completed.
+
+    - Isolation (Non-interference)
+
+        Transactions executing at the same time should not affect each other. If a transaction has not
+        yet completed, its changes should not be visible to other transactions.
+
+        Example: Two managers are trying to sell the last product left in the warehouse at the same
+        time.
+
+    - Durability (Guaranteed to be remembered)
+
+        Changes made after a transaction is successfully completed (Commit) must remain permanently in
+        memory. Even if the system crashes or has a power outage, that data must not be lost.
+
+- Application in Java (JDBC Example)
+
+    Java uses the Connection object to manage transactions. By default, autoCommit mode is enabled
+    (each request is written to memory immediately). This should be disabled to enforce ACID principles.
+
+    - Example:
+
+        ![image.png](attachment:f5947f0d-5491-4c02-91ba-2590e039eb8e:image.png)
+
+        ![image.png](attachment:a997c281-183f-49a8-853a-39d96016d940:image.png)
