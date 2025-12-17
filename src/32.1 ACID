@@ -1,0 +1,27 @@
+# #32.1 ACID
+
+- Overview
+
+    This tutorial explains the ACID principles that Java programmers use to ensure data security and
+    integrity when working with databases.
+
+    ![image.png](attachment:97b4e8f6-dd38-4cdc-b2bb-a1a7053aef41:image.png)
+
+- What is a Transaction?
+
+    To understand ACID principles, you first need to know the concept of a Transaction. A Transaction
+    is a logically executed group of operations as a single operation.
+    In the context of Java: The process of ensuring that multiple SQL queries (e.g. INSERT, UPDATE) are
+    all successfully completed, or that none of them are written to memory if any of them fail.
+
+- ACID
+
+     represents four key properties: Atomicity, Consistency, Isolation, Durability.
+
+    - Atomicity (indivisible)
+
+        "All or nothing."
+        If an error occurs in the middle of the process (for example, a light goes out or an Exception
+        occurs in the code), all changes are canceled (Rollback).
+
+        Example:Transfer money from a bank account
