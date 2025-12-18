@@ -21,3 +21,26 @@
         *Note: Spring Cloud versions must match Spring Boot version.*
 
         ![image.png](attachment:89c01161-4ca5-4e02-b395-717439d6ce38:image.png)
+
+    - Step 2: Activating Feign Client
+
+        Əsas tətbiq klassına (Main class) `@EnableFeignClients` annotasiyasını əlavə etməlisiniz. Bu,
+        Spring-ə layihədəki Feign interfeyslərini axtarıb tapmağı əmr edir.
+
+        ![image.png](attachment:0ab96dd5-d41a-4546-b130-9f7d1464abfe:image.png)
+
+    - Step 3: Creating the Client Interface (Feign Interface)
+
+        Now, create the interface that will talk to the service on the other side.
+
+        Let's say we have a service called ProductService and we want to send a request to its address
+        /products/{id}.
+
+        ![image.png](attachment:d36e1542-6d2f-4a42-909a-edefbfbe5f8b:image.png)
+
+    - Step 4: Client Injection
+
+        You can use the `ProductClient` interface you have already created inside a regular Service or
+        Controller with `@Autowired` (or constructor injection).
+
+        ![image.png](attachment:0864fcc1-7cf5-4395-a050-e74f33532e73:image.png)
