@@ -1,0 +1,23 @@
+# #33. Feign Client
+
+- Definition
+
+    In a microservice architecture, one service often needs to receive information from another service
+    (for example, an "Order Service" calling a "Product Service"). Previously, `RestTemplate` was used
+    for this, but this method required a lot of "boilerplate" (repeated) code.
+
+- **Spring Feign Client**
+
+    Spring Feign Client is a declarative REST client. This means that you simply create a **Java
+    Interface** and decorate it with annotations. Spring Boot automatically creates an implementation
+    for this interface and handles HTTP requests. It looks like you are calling a local method, but in
+    reality the request is going to another service over the network.
+
+- Step-by-Step Installation
+    - Step 1: Adding Dependencies
+
+        You must have `spring-cloud-starter-openfeign` library in your project (pom.xml or build.gradle).
+
+        *Note: Spring Cloud versions must match Spring Boot version.*
+
+        ![image.png](attachment:89c01161-4ca5-4e02-b395-717439d6ce38:image.png)
