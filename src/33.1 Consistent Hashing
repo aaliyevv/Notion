@@ -1,0 +1,31 @@
+# #33.1 Consistent Hashing
+
+- Descriptive
+
+    ![image.png](attachment:dc5dfe36-68c6-4838-a462-fdbae781cfdd:image.png)
+
+    ![image.png](attachment:dd07e2f2-3750-4987-aab8-5c8a78d0dc79:image.png)
+
+- Key Takeaways
+    1. **Consistent Hashing Principles**:
+        - Hash both servers and data to a circular hash space.
+        - Assign data to servers by moving clockwise on the hash ring.
+    2. **Advantages**:
+        - Minimizes data movement during server changes.
+        - Allows for balanced data distribution through virtual nodes.
+    3. **Applications**:
+        - Widely used in distributed databases, CDNs, and load balancers to improve reliability and
+        performance in dynamic environments.
+- **Introduction to Consistent Hashing**
+    - **Concept**: Consistent hashing is a technique used for data distribution across servers.
+    - **Usage**: Utilized by distributed systems like DynamoDB, Apache Cassandra, Discord, and Akamai
+    CDN.
+    - **Problem Addressed**: Balances data distribution even when servers are added or removed.
+- **Background: Distributed Systems and Horizontal Scaling**
+    - **Distributed Systems**: Data too large for a single server is spread across multiple servers.
+    - **Horizontal Scaling**: Adding more servers to handle increased data.
+    - **Goal**: Evenly distribute data across servers for predictable performance.
+- **How Simple Hashing Works**
+    - **Hash Function**: Uses functions like MD5 or MurmurHash to map object keys to a numerical range.
+    - **Modulo Operation**: Determines server placement by taking the hash modulo the number of servers.
+    - **Limitations**: Effective only if the cluster size remains fixed.
