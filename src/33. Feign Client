@@ -3,8 +3,7 @@
 - Definition
 
     In a microservice architecture, one service often needs to receive information from another service
-    (for example, an "Order Service" calling a "Product Service"). Previously, `RestTemplate` was used
-    for this, but this method required a lot of "boilerplate" (repeated) code.
+    (for example, an "Order Service" calling a "Product Service"). Previously, `RestTemplate` was used for this, but this method required a lot of "boilerplate" (repeated) code.
 
 - **Spring Feign Client**
 
@@ -44,3 +43,26 @@
         Controller with `@Autowired` (or constructor injection).
 
         ![image.png](attachment:0864fcc1-7cf5-4395-a050-e74f33532e73:image.png)
+
+- Configuration
+
+    Feign automatically offers timeouts and error handling. These can be configured in the
+    `application.properties` file:
+
+    ![image.png](attachment:c67f3eee-c0dd-4ecc-97d4-c6860d7951ae:image.png)
+
+- Task
+
+    **Task: "Currency Converter"**
+
+    **Scenario:** You have a "Payment Service". The user makes a payment in AZN, but your system accepts
+     USD. You need to find out the current exchange rate.
+
+    **Requirements:**
+
+    1. Find a free Currency API on the Internet (Example: *ExchangeRate-API* or *Frankfurter API*).
+    - *Example URL:* `https://api.frankfurter.app/latest?from=USD&to=AZN`
+    1. Create a Feign interface called `CurrencyClient` in your Spring Boot project.
+    2. This interface should query that API and return the current exchange rate.
+    3. Write a `convertPrice(double amount)` method that will take the exchange rate via Feign and
+    calculate and print the amount.
