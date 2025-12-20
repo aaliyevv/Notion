@@ -29,3 +29,35 @@
     - **Hash Function**: Uses functions like MD5 or MurmurHash to map object keys to a numerical range.
     - **Modulo Operation**: Determines server placement by taking the hash modulo the number of servers.
     - **Limitations**: Effective only if the cluster size remains fixed.
+- **Problems with Simple Hashing in Dynamic Clusters**
+
+    **Server Changes**: Adding or removing a server changes the modulo operation result, causing:
+
+    - **Data Redistribution**: Large portion of keys need to be reassigned.
+    - **Misses and Reassignments**: High volume of data movement during server changes.
+
+### Consistent Hashing: An Improved Approach
+
+- **Principles of Consistent Hashing**
+    - **Core Insight**: Hash both object keys and server names to the same hash range, forming a
+    circular structure (hash ring).
+    - **Hash Ring**: Connects both ends of the hash space, allowing for circular navigation.
+    - **Object Placement**: Objects are mapped onto the ring based on hash values, and assigned to the
+    next server clockwise.
+- **Server Addition and Removal with Consistent Hashing**
+    - **Adding a Server**: Only nearby objects in the hash ring are affected, minimizing data movement.
+    - **Removing a Server**: Only the objects directly affected need to be redistributed, not the entire
+     data set.
+- Solving the Imbalance Problem: Virtual Nodes
+    - **Concept**: Each server has multiple "virtual nodes" on the ring.
+    - **Balanced Distribution**: Virtual nodes help ensure a more even data spread by dividing the hash
+    ring into smaller, manageable segments.
+    - **Customization**: System admins can adjust the number of virtual nodes to balance trade-offs
+    between data balance and metadata storage.
+- Real-World Applications of Consistent Hashing
+    - **NoSQL Databases (Amazon DynamoDB, Apache Cassandra)**: Consistent hashing minimizes data
+    movement during rebalancing.
+    - **Content Delivery Networks (Akamai)**: Ensures web content is evenly distributed among edge
+    servers.
+    - **Load Balancers (Google Load Balancer)**: Helps distribute persistent connections across servers,
+     reducing the impact of server failures on client connections.
