@@ -1,0 +1,28 @@
+Spring Boot simplifies the process of sending emails by providing the `spring-boot-starter-mail`.
+Here’s how to get started:
+
+- **Step 1: Add the Mail Starter Dependency**
+
+    In your `pom.xml`, include the following dependency to enable email functionalities:
+
+    ![image.png](attachment:45edb9dc-9c85-4ade-8201-ff8ef86842ba:image.png)
+
+- **Step 2: Configure Your Mail Server**
+
+    Next, configure your SMTP (Simple Mail Transfer Protocol) server details in your
+    `application.properties` file. For Gmail, the configuration would look like this:
+
+    ![image.png](attachment:b4190a9c-6987-4e75-b437-cb5fca9e2527:image.png)
+
+- **Step 3: Create an Email Service**
+
+    Create a service class to handle the email sending logic. This class will use Spring's
+    `JavaMailSender` to send emails.
+
+    ![image.png](attachment:735af8a5-9515-4cf7-ac5d-1bd4ae0282f9:image.png)
+
+- **Step 4: Send Emails from Your Application**
+
+    You can now inject the `EmailService` into any of your controllers or other services to send emails.
+
+    ![image.png](attachment:e4590941-1bac-4857-b06f-a6155b50e122:image.png)
