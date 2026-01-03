@@ -1,5 +1,7 @@
+# #34. Spring Mailing
+
 Spring Boot simplifies the process of sending emails by providing the `spring-boot-starter-mail`.
-Here’s how to get started:
+ Here’s how to get started:
 
 - **Step 1: Add the Mail Starter Dependency**
 
@@ -26,3 +28,36 @@ Here’s how to get started:
     You can now inject the `EmailService` into any of your controllers or other services to send emails.
 
     ![image.png](attachment:e4590941-1bac-4857-b06f-a6155b50e122:image.png)
+
+
+### Simplified Logging in Spring Boot
+
+Spring Boot comes with a pre-configured logging framework, Logback, which is powerful and easy to
+customize.
+
+- **Step 1: Understanding Default Logging**
+
+    By default, Spring Boot logs to the console. You can control the log levels by setting properties
+    in your `application.properties` file. The standard logging levels are `TRACE`, `DEBUG`, `INFO`,
+    `WARN`, and `ERROR`.
+
+- **Step 2: Configuring Log Levels**
+
+    You can set the logging level for the entire application or for specific packages.
+
+    ![image.png](attachment:75794450-7453-42bb-b964-9ffc453977c0:image.png)
+
+- **Step 3: Logging to a File**
+
+    To log output to a file in addition to the console, you can specify a file name or a path.
+
+    ![image.png](attachment:f1b128b7-3026-42b2-abd2-b29f6247a9e4:image.png)
+
+    Spring Boot will automatically handle log rotation when the file reaches 10MB.
+
+- **Step 4: Using the Logger in Your Code**
+
+    It is a best practice to use the SLF4J (Simple Logging Facade for Java) API to instrument your code
+    with log messages.
+
+    ![image.png](attachment:21041900-7940-4c2c-bf1f-527752de88af:image.png)
