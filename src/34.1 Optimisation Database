@@ -1,0 +1,27 @@
+# #34.1 Optimisation Database
+
+- Overview
+
+    ![image.png](attachment:3e7e0554-7ef3-43f8-aa90-fd789058fe3b:image.png)
+
+- **Introduction**
+
+    As applications grow, so does the data and user base. Increased load can cause slow response times,
+    timeouts, crashes. **Scaling** ensures smooth operations and a good user experience.
+
+
+### **Strategies for Scaling**
+
+- **Indexing**
+
+    Similar to a book index, helps locate specific data quickly.
+
+    **Benefits:**
+
+    - Faster query execution (e.g., finding orders by Order ID).
+    - Effective for range queries and sorted data.
+
+    **Trade-offs**:
+
+    - Slower write operations due to index updates.
+    - Balance is key in selecting fields to index.
