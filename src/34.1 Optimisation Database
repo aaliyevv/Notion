@@ -25,3 +25,26 @@
 
     - Slower write operations due to index updates.
     - Balance is key in selecting fields to index.
+    
+- **Materialized Views**
+
+    Pre-computed snapshots of data for faster access.
+
+    **Benefits:**
+
+    - Speeds up complex query results (e.g., daily sales reports).
+    - Reduces database computational load.
+
+    **Trade-off**: Refreshing views can be resource-intensive.
+
+- **Denormalization**
+
+    Store redundant data to simplify queries and speed up retrieval (like NoSQL).
+
+    **Benefits**:
+
+    - Minimizes complex joins for faster reads.
+
+    **Trade-offs**:
+
+    - Increased storage and complexity in maintaining data consistency.
