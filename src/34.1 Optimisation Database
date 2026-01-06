@@ -7,7 +7,7 @@
 - **Introduction**
 
     As applications grow, so does the data and user base. Increased load can cause slow response times,
-    timeouts, crashes. **Scaling** ensures smooth operations and a good user experience.
+     timeouts, crashes. **Scaling** ensures smooth operations and a good user experience.
 
 
 ### **Strategies for Scaling**
@@ -25,7 +25,6 @@
 
     - Slower write operations due to index updates.
     - Balance is key in selecting fields to index.
-    
 - **Materialized Views**
 
     Pre-computed snapshots of data for faster access.
@@ -48,3 +47,28 @@
     **Trade-offs**:
 
     - Increased storage and complexity in maintaining data consistency.
+- **Vertical Scaling**
+
+    Add resources (CPU, RAM, storage) to a single database server.
+
+    **Benefits**:
+
+    - Immediate performance boost.
+    - Simple to implement without application changes.
+
+    **Trade-offs**:
+
+    - Hardware limits and high costs at scale.
+    - Single point of failure risk.
+- **Caching**
+
+    Store frequently accessed data in faster storage.
+
+    **Benefits**:
+
+    - Reduces database load and speeds up response times.
+    - Tools: Redis, Memcached.
+
+    **Trade-offs**:
+
+    - Cache invalidation to keep data fresh is challenging.
