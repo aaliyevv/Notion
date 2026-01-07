@@ -47,6 +47,7 @@
     **Trade-offs**:
 
     - Increased storage and complexity in maintaining data consistency.
+
 - **Vertical Scaling**
 
     Add resources (CPU, RAM, storage) to a single database server.
@@ -60,6 +61,7 @@
 
     - Hardware limits and high costs at scale.
     - Single point of failure risk.
+
 - **Caching**
 
     Store frequently accessed data in faster storage.
@@ -72,3 +74,20 @@
     **Trade-offs**:
 
     - Cache invalidation to keep data fresh is challenging.
+
+- **Replication**
+
+    Duplicate the database across multiple servers for load distribution and fault tolerance.
+
+    **Types:**
+
+    - **Synchronous**: Immediate consistency but higher latency.
+    - **Asynchronous**: Faster writes but temporary inconsistencies.
+
+    **Benefits**:
+
+    - Enhances availability and read performance.
+
+    **Trade-offs**:
+
+    - Increases storage and maintenance complexity.
