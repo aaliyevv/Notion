@@ -25,6 +25,7 @@
 
     - Slower write operations due to index updates.
     - Balance is key in selecting fields to index.
+
 - **Materialized Views**
 
     Pre-computed snapshots of data for faster access.
@@ -91,3 +92,18 @@
     **Trade-offs**:
 
     - Increases storage and maintenance complexity.
+
+- **Sharding**
+
+    Split the database into smaller, independent pieces (shards).
+
+    **Benefits**:
+
+    - Horizontal scaling by distributing data across multiple servers.
+
+    **Example**: Instagram shards data by user ID to handle millions of requests efficiently.
+
+    **Trade-offs**:
+
+    - Complex design and management.
+    - Requires an even distribution of data and careful query logic.
