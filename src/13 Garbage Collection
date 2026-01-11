@@ -1,0 +1,31 @@
+# **#13** Garbage Collection
+
+- **Java Memory Model Overview**
+
+    Generally JVM memory  contains **Main Memory (Heap + Stack + Metaspace)**. Java uses **Heap Memory**
+     for dynamic memory allocation. Garbage Collector (GC)  manages objects inside Heap. In stack When a
+     method finishes executing, its frame is automatically removed from the stack. GC does not work here.
+      **Burada GC işləmir.** Java heap memory is divided into different sections:
+
+    Young Generation (Eden Space (New Object Creation) and Survivor Spaces) → Old Generation and Metaspace
+    (Metadata)
+
+    Long-living objects are moved to Old Generation after multiple GC cycles but after one GC cycle moved
+    to **Survivor Spaces**
+
+    ![image.png](attachment:0f765170-6aea-41e2-acb7-d94db8501f7c:image.png)
+
+    Metadata (older name was PermGen): is not data itself, data about the data. For instance picture and
+    the date when that picture was taken. The space of the Metadata is more permanent than others. PermGen:
+     Permanent Generation
+
+    GC mostly and often cleans up this small Young Generation space(Minor GC).
+
+    When the Older Generation is full, the slower and more comprehensive Major GC is launched.
+
+- **Importance of  Garbage Collection**
+    - Improves application performance(reduce **memory leaks)**
+    - Reduces the risk of `OutOfMemoryError` (JVM cant allocate a place for an object)
+    - Simplifies memory management for developers(Unlike C++, programmer does not have to manually clean up
+     memory)
+
