@@ -29,3 +29,32 @@
     - Simplifies memory management for developers(Unlike C++, programmer does not have to manually clean up
      memory)
 
+- **Garbage Collection Process**
+
+    1. **Mark Phase**: Identifies reachable(referenced) objects(marks as “live”).
+    2. **Sweep Phase**: Removes unreferenced objects.
+    3. **Compaction Phase**: Organizes memory by moving surviving objects closer together to reduce
+    fragmentation.
+
+    **Fragmentation**: Inefficient use of memory due to the allocation and deallocation of objects over
+    time. This process leaves "gaps" or small, non-contiguous blocks of free memory spreaded throughout
+    the heap. GC might need to work harder and more frequently to find suitable free blocks for new object
+     allocations.
+
+- **Objects that Eligible for GC**
+
+    - Setting objects to `null`.
+    - When an object no longer has references pointing to it or assigning a reference to another object.
+    - Explicitly calling `System.gc()` (not recommended).
+
+- **Default Garbage Collector in Java**
+
+    The **default garbage collector** in Java depends on the **JDK version** and **JVM settings**:
+
+    - **Java 8 and earlier** → **Parallel GC**
+    - **Java 9 to 14** → **G1GC**
+    - **Java 15 and later** → **G1GC (can also use ZGC or Shenandoah)**
+
+    You can check the default GC used by the JVM with:
+
+    java -XX:+PrintCommandLineFlags -version
