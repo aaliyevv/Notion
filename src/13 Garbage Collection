@@ -58,3 +58,38 @@
     You can check the default GC used by the JVM with:
 
     java -XX:+PrintCommandLineFlags -version
+
+- **Garbage Collector Hierarchy**
+
+    **Serial GC → Parallel GC (Throughput GC) → G1GC (Garbage First GC Java 9+) →ZGC (Z Garbage Collector
+    Java 11+)**
+
+    **Serial GC** - like one worker is busy cleaning, while the others are waiting.
+
+    **Parallel GC** - multiple workers can work simultaneously.
+
+    **G1GC** - uses both resources and GC on average.
+
+    **ZGC** - the most ideal option with low latency,  the code will run quickly thanks to a lot of
+     resources and workers.
+
+- **finalize()**
+
+    When we call System.gc(), it searches finalize method. In Java, it is a method that is called before
+     an object is deleted by garbage collection. It has been outdated since Java 9.
+
+    - can significantly degrade performance
+    - not guaranteed
+    - more recommended to use `Cleaner` və `PhantomReference` for Java 9+.
+
+- **StringBuilder vs String**
+
+    1. `String` in Java is immutable(unchangeable). But `StringBuilder` mutable class. It makes changes
+     to existing text, does not create a new object, and is faster.
+    2. When we use concatenation time complexity of `String` is O(n²) but `StringBuilder` is O(n).
+    3. Large string concatenation uses a lot of RAM.
+    4. If a lot of `string +=` is used, GC Garbage Collector has to run frequently, which degrades
+     performance.
+
+    StringBuffer is used for multi-threaded operations, but StringBuilder is used for single-threaded
+    tasks(synchronized).
