@@ -93,3 +93,13 @@
 
     StringBuffer is used for multi-threaded operations, but StringBuilder is used for single-threaded
     tasks(synchronized).
+
+- **How StringBuilder is work?**
+
+    1. creates internal buffer
+    2. saves the text in buffer
+    3. When you add new text with `append()` or `insert()` , it modifies that buffer without creating a new object.
+
+    ![image.png](attachment:39af680d-f76d-47df-bc06-4304e20aa102:image.png)
+
+    ![image.png](attachment:cf53453d-618d-4adb-84a1-08829dc14f9c:image.png)

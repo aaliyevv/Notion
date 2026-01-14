@@ -1,0 +1,14 @@
+# #12 Collections Framework: Map
+
+- Map
+
+    is an associative array: it links a key to exactly one value(like dictionary).
+
+    Collection → Map → SortedMap, NavigableMap
+
+    ![image.png](attachment:cb113b2e-66f4-4aaf-96cc-990ce3594215:image.png)
+
+- Essential Operations
+
+
+    ![image.png](attachment:bef7c5b7-a7a6-4743-a6ca-bb6f7fb0cdba:image.png)
