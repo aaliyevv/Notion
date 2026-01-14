@@ -1,0 +1,16 @@
+# #11 Collections Framework: Set (Interface) – HashSet, LinkedHashSet, TreeSet
+
+- The **Set** interface
+
+    When you need to store **elements that must be unique.(**does not allow duplicate elements**)**
+
+    The order of elements is not guaranteed (except with specific implementations).
+
+- Three main implementations of the Set interface in Java
+    - **HashSet**
+    - **LinkedHashSet**
+    - **TreeSet**
+
+- Key Methods in the Set Interface
+
+    add, remove, contains(returns `true` or `false`), size, iterator(for loop).
