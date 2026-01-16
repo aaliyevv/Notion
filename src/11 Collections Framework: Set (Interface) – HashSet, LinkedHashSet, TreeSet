@@ -7,6 +7,7 @@
     The order of elements is not guaranteed (except with specific implementations).
 
 - Three main implementations of the Set interface in Java
+
     - **HashSet**
     - **LinkedHashSet**
     - **TreeSet**
@@ -14,3 +15,34 @@
 - Key Methods in the Set Interface
 
     add, remove, contains(returns `true` or `false`), size, iterator(for loop).
+
+- **HashSet**
+
+    - **No Guaranteed Order**
+    - Constant-time performance (`O(1)`) for: add, remove, and contains.
+
+    *Code may display the elements in an unpredictable order.*
+
+- **LinkedHashSet**
+
+    - **Maintains Insertion Order**
+    - **Slightly Lower Performance** (because of order)
+    - Uses extra memory than HashSet
+
+    *Code will reflect the order of insertion.*
+
+- **TreeSet**
+
+    - **Sorted Order**
+    - **Lower Performance:** Add, remove, and contains take `O(log n)` time
+    - TreeSet does not allow null elements.
+
+    *Code will be sorted alphabetically by default.*
+
+- Comparison Summary
+
+    ![image.png](attachment:9a04c659-29a6-4c8e-8d69-3c81a6444399:image.png)
+
+- Simple Practical Code Examples
+
+    ![image.png](attachment:ce53e287-9f94-4f42-96de-37e8cd3faad9:image.png)
