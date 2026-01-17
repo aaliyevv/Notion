@@ -1,0 +1,18 @@
+# #10 Collections Framework: Lists (ArrayList, LinkedList)
+
+- Collections
+
+
+    ![image.png](attachment:b7c57e92-2c9a-4654-a583-6332edfdf559:image.png)
+
+- Why Use Collections Framework?
+
+
+    1. Optimized data structures
+    2. Increased program speed and quality
+
+- Lists in Java
+
+
+    An ordered collection allowing duplicates, can dynamically grow or shrink.
+
