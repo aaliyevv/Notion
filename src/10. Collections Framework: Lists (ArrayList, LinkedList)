@@ -16,3 +16,19 @@
 
     An ordered collection allowing duplicates, can dynamically grow or shrink.
 
+- Common implementations of List
+
+
+    - **ArrayList (**uses a resizable array**)**
+    - **LinkedList (**uses doubly-linked lists**)**
+
+    Common operations: get, add, remove
+
+- Difference between ArrayList and LinkedList
+
+
+    - ArrayList allows random access to elements faster than LinkedList (better search or retrieval).
+    - LinkedList faster insertions and deletions than ArrayList.
+    - Memory overhead in ArrayList is lower than LinkedList.
+
+    ![image.png](attachment:a196d82c-5250-4b0e-a22a-c7b1bc27139c:image.png)
