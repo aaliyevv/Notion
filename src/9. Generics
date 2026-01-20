@@ -1,0 +1,28 @@
+# #9 Generics
+
+**Generics** allow you to write **a single class, interface, or method** that automatically works with
+ different types of data.
+
+- Generics provide:
+
+    - **Type safety**
+    - **Code reusability**
+    - **Avoid runtime errors**
+- Generic Classes
+
+    Syntax                                                            Usage
+
+    ![image.png](attachment:b306c8cf-f80f-4249-834c-7a73d7e8f047:image.png)
+
+    `<T>` is a **type parameter**, you
+
+    ![image.png](attachment:14ed349d-9d78-4c35-aaa1-92ef114dbe4f:image.png)
+
+    can also use `<E>`, `<K, V>`, etc.
+
+- Generic Methods
+
+
+    ![image.png](attachment:8083dc44-3e05-4538-acf7-904db66c5efe:image.png)
+
+    ![image.png](attachment:271fb68a-bac8-46ab-b7da-a6bb614ba4b6:image.png)
