@@ -1,13 +1,14 @@
 # #9 Generics
 
 **Generics** allow you to write **a single class, interface, or method** that automatically works with
- different types of data.
+different types of data.
 
 - Generics provide:
 
     - **Type safety**
     - **Code reusability**
     - **Avoid runtime errors**
+    
 - Generic Classes
 
     Syntax                                                            Usage
@@ -26,3 +27,38 @@
     ![image.png](attachment:8083dc44-3e05-4538-acf7-904db66c5efe:image.png)
 
     ![image.png](attachment:271fb68a-bac8-46ab-b7da-a6bb614ba4b6:image.png)
+
+- Bounded Type Parameters
+
+    ```jsx
+    class Calculator<T extends Number>
+    ```
+
+- Wildcards  “`?`" (unknown type)
+
+    Used when you don't know the exact type.
+
+- Bounded Wildcards
+
+
+    ![image.png](attachment:493c17ee-efea-4959-a8f0-2ebd7872ecae:image.png)
+
+    ![image.png](attachment:ceaebfb4-81be-4e5e-b085-e3ce51c26d03:image.png)
+
+- Generics with Interfaces (<K, V>)
+
+    Example                                                     Usage
+
+    ![image.png](attachment:441119ca-d009-4149-a63f-80e6dba427ef:image.png)
+
+    ![image.png](attachment:cb0dcebe-cc85-4936-8356-1bb766f7ff92:image.png)
+
+- Generic Inheritance
+
+    ![image.png](attachment:ae613216-e469-45ec-8852-83b3966b19b6:image.png)
+
+- Type Erasure
+
+    Java uses **type erasure** to implement generics: all generic type info is removed at runtime.
+
+    ![image.png](attachment:e5ea2012-455b-4087-8161-c895b791c6fe:image.png)
