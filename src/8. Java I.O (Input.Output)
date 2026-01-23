@@ -12,12 +12,40 @@
 
     In java streams devide  two categories:
 
-    Byte streams: Read byte-byte, suitable for all types of files(images, videos, text). Main classes
-     are `InputStream` və `OutputStream`.
+    Byte streams: Read byte-byte, suitable for all types of files(images, videos, text). Main
+    classes are `InputStream` və `OutputStream`.
 
-    Character streams: Read symbol-symbol(16-bit Unicode), only for text files. Main classes are `Reader`
-     and `Writer` .
+    Character streams: Read symbol-symbol(16-bit Unicode), only for text files. Main classes are
+    `Reader` and `Writer` .
 
 - import `java.io.File`
 
     to perform various operations(methods) on files or folders
+
+- Main methods
+
+    ![image.png](attachment:c2980255-ed1e-47bd-8df9-1197a2a0c04d:image.png)
+
+- Create a Directory
+
+    ![image.png](attachment:c9602b45-1045-4d39-9b58-fd03eb0d435f:image.png)
+
+- Create a File
+
+    ![image.png](attachment:142253db-7f60-47c0-b080-e56a329d22f3:image.png)
+
+    If the file has absolute path:
+
+    new File("C:/Users/User1/Desktop/Logs/test.txt")
+
+
+`BufferedReader` prefer over`FileReader` to enhance performance(stores data into a buffer line by
+ line).
+
+ - try with resources
+
+     Automatically close  streams, we don’t need finally block.
+
+     // try-with-resources ilə axınlar avtomatik bağlanacaq
+             try (FileReader fileReader = new FileReader(fileName);
+                  BufferedReader bufferedReader = new BufferedReader(fileReader)){
