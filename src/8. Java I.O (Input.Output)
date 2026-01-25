@@ -12,8 +12,8 @@
 
     In java streams devide  two categories:
 
-    Byte streams: Read byte-byte, suitable for all types of files(images, videos, text). Main
-    classes are `InputStream` və `OutputStream`.
+    Byte streams: Read byte-byte, suitable for all types of files(images, videos, text). Main classes
+    are `InputStream` və `OutputStream`.
 
     Character streams: Read symbol-symbol(16-bit Unicode), only for text files. Main classes are
     `Reader` and `Writer` .
@@ -40,12 +40,32 @@
 
 
 `BufferedReader` prefer over`FileReader` to enhance performance(stores data into a buffer line by
- line).
+line).
 
- - try with resources
+- try with resources
 
-     Automatically close  streams, we don’t need finally block.
+    Automatically close  streams, we don’t need finally block.
 
-     // try-with-resources ilə axınlar avtomatik bağlanacaq
-             try (FileReader fileReader = new FileReader(fileName);
-                  BufferedReader bufferedReader = new BufferedReader(fileReader)){
+    // try-with-resources ilə axınlar avtomatik bağlanacaq
+            try (FileReader fileReader = new FileReader(fileName);
+                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+
+- Input Operations
+
+    ![image.png](attachment:0bddd59f-e22b-4fe4-b0a6-f4ba4855d381:image.png)
+
+    ![image.png](attachment:db46be96-9c9b-485a-a59e-e7419167d9dc:image.png)
+
+
+`FileWriter` prefer over `BufferedWriter` o enhance performance.
+
+- Output Operations
+
+    ![image.png](attachment:8e0a6efb-758f-4a82-8bb4-4e537032f658:image.png)
+
+    ![image.png](attachment:43be70ab-9a0e-418a-8572-7b9d7706f5b6:image.png)
+
+
+In `FileWriter` constructor as second parameter if you send true, the new info was added at the end
+of the file(`append` mode). On the other hand, the existing contents of the file are deleted and
+rewritten(`overwrite` mode).
