@@ -1,0 +1,29 @@
+# #7 Java Memory Allocation: Heap and Stack
+
+- JDK, JRE and JVM:
+
+    JVM (Java Virtual Machine) - all java code is built and run on it.
+
+    JDK (Java Development Kit) -  a software development kit (collection) that provides the tools,
+     libraries to create, compile, and debug Java applications. It includes the [Java Runtime
+     Environment (JRE)](https://www.google.com/search?rlz=1C5CHFA_enAZ1077AZ1077&cs=1&sca_esv=
+     e856aeb0adf4cd44&sxsrf=AE3TifMztK2hgjYCidil7M4KLyVRw2CnHg%3A1756780431726&q=Java+Runtime+
+     Environment+%28JRE%29&sa=X&ved=2ahUKEwicm76MhbmPAxUDR_EDHeP4CuoQxccNegQIBBAB&mstk=AUtExfDyw
+     Zvnx8yL5RI3-F8tlrSsC6YbgieCsKhgVCwjh5c59wwXiEfi1Q1e3J40Q4cmWyTxPCJrX8cCBLNonuGdBnn08dJe2hzG
+     JIFPpPoew6e8DVNN2KxUilKgG-ZCS2wEBwsrJV4sNEgzZddp9Scd-mWcvx7QjWIkXhku0Dl4rA4zapQ&csui=3)
+      (for running Java programs), a Java Compiler(which converts source code to bytecode),
+     and Application Programming Interfaces (APIs).
+
+    ![image.png](attachment:e7be4f52-f515-4abf-a02a-d292841db04f:image.png)
+
+- **Notes:**
+
+    If we compare Strings with the same address and the same value it give us true.
+
+    If we compare with the use of .equals it compares only value.
+
+    Reference, I mean non primitive types change inside methods and outside of the methods
+
+    If method call itself it will be recursion and it cause stack overflow.
+
+    Heap overflow: For instance, we add object to list continuously.
