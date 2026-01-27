@@ -27,3 +27,21 @@
     If method call itself it will be recursion and it cause stack overflow.
 
     Heap overflow: For instance, we add object to list continuously.
+
+    - Heap and Stack
+
+        İf we create an object it will live in the heap, naming the object, call the method or create
+        new field will keep in the stack.
+
+        Stack is LIFO (Last in First out) type memory allocation but in heap data exist by addressing.
+         Big datas store in heap, small size datas store in stack because of this stack is speed faster
+          than heap.
+
+    - Garbage Collector
+
+        **a system that automatically manages memory by identifying and removing objects and data that
+        are no longer in use by a program, preventing memory leaks and freeing up space for new
+        allocations**.
+
+        If workers and resources are limited, we must decide whether to spend them on cleaning up trash
+        or getting work done.
