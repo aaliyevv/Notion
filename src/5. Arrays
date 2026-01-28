@@ -1,0 +1,24 @@
+# #5 Arrays
+
+- Notes
+
+    In programming, indexes usually start at 0.
+
+    Matrix.lenght - the number of raws
+
+    Matrix[i].lenght - the number of columns inside one row
+
+    ![image.png](attachment:768f13c9-ce51-4084-acfa-5fd91decf5ed:image.png)
+
+    Inside the matrix we can keep different lenght one-dimensional arrays.
+
+    Searching in array
+
+    ![image.png](attachment:421d2e00-4fae-455f-a4ce-aff3b5ed5864:image.png)
+
+    Arrays.stream(numbers).forEach(System.out.println(x)); - enumerate the elements of the array.
+
+    int min = Arrays.stream(numbers).min().getAsInt();
+
+    int max = Arrays.stream(numbers).max().getAsInt();
+
