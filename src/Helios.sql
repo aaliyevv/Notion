@@ -27,3 +27,39 @@ VALUES ('Ali', 'Aliyev', 'ali@example.com', '+994705155558',
         'Sumgayit', 300);
 
 SELECT * FROM customerss;
+
+SELECT customerss.first_name, customerss.last_name, customerss.account_balance
+FROM customerss;
+
+SELECT * FROM customerss LIMIT 2;
+
+SELECT first_name, last_name
+FROM customerss ORDER BY first_name DESC;
+
+DELETE FROM customerss
+WHERE id IN (5, 6);
+
+TRUNCATE TABLE customerss CASCADE; /* Deletes all rows and dependent raw immediately and resets. */
+
+TRUNCATE TABLE customerss RESTART IDENTITY CASCADE; /* Deletes all rows and dependent raw
+                                                       immediately and resets any SERIAL*/
+
+SELECT * FROM customerss WHERE id=1 AND city='Sumgayit';
+
+SELECT * FROM customerss WHERE id=1 OR city='Sumgayit';
+
+SELECT * FROM customerss WHERE NOT id=5;
+
+SELECT * FROM customerss WHERE id=3 AND  email='ravan@example.com'
+                            OR city='Sumgayit';
+
+SELECT * FROM customerss WHERE id IN (3,5,6);
+
+SELECT * FROM customerss WHERE city IN ('Baku', 'Sumgayit');
+
+SELECT * FROM orderss WHERE total_amount BETWEEN 1800 AND 2400;
+
+SELECT customerss.email FROM customerss WHERE id=1;
+UPDATE customerss SET email='aaliyev@example.com' WHERE id=1;
+
+UPDATE customerss SET phone='+994706848773' WHERE id=2;
