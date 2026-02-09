@@ -63,3 +63,26 @@ SELECT customerss.email FROM customerss WHERE id=1;
 UPDATE customerss SET email='aaliyev@example.com' WHERE id=1;
 
 UPDATE customerss SET phone='+994706848773' WHERE id=2;
+
+UPDATE orderss
+    SET total_amount = CASE
+        WHEN id=1 THEN 1600
+        WHEN id=2 THEN 1900
+    END
+WHERE id IN (1,2);
+
+ALTER TABLE customerss ADD COLUMN age INT DEFAULT 18;
+ALTER TABLE customerss DROP COLUMN age;
+
+UPDATE customerss
+    SET age = CASE
+        WHEN id=1 THEN 23
+        WHEN id=2 THEN 22
+    END
+WHERE id IN (1,2);
+
+/* SELECT customer_id, sum(total_amount) AS total_spent
+FROM orderss
+GROUP BY customer_id; */
+
+
