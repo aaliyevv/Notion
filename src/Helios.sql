@@ -179,3 +179,19 @@ VALUES (1, 1, 2, 6000),
 
 DELETE FROM order_item
 WHERE order_id IN (3, 4, 5, 6);
+INSERT INTO paymentss (order_id, payment_date, amount)
+VALUES (1, '2025-12-5', 6000),
+       (2, '2025-12-24', 6000);
+
+SELECT DISTINCT subtotal FROM order_item;
+
+INSERT INTO complaintss (customer_id, complaint_text, status) /* default date */
+VALUES (1, 'higher price', 'unsolved' ),
+       (2, 'bad service', 'solved');
+
+
+SELECT c.first_name, c.last_name, o.total_amount  FROM customerss c
+JOIN orderss o on c.id=customer_id;
+
+SELECT first_name, last_name, o.total_amount, o.order_date FROM customerss c
+LEFT JOIN orderss o on c.id=customer_id;
