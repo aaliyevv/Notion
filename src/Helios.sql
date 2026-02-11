@@ -86,3 +86,36 @@ FROM orderss
 GROUP BY customer_id; */
 
 
+CREATE TABLE orderss (
+    id SERIAL PRIMARY KEY,
+    customer_id INT NOT NULL REFERENCES customerss(id) ON DELETE CASCADE,
+    order_date DATE DEFAULT CURRENT_DATE,
+    total_amount NUMERIC(10,2) NOT NULL
+);
+
+INSERT INTO orderss (customer_id, order_date, total_amount)
+VALUES (3, '2026-01-13', 2300);
+
+INSERT INTO orderss (customer_id, order_date, total_amount)
+VALUES (5, '2026-01-15', 1300);
+
+SELECT count(total_amount) FROM orderss;
+
+SELECT total_amount, COUNT(*) AS order_count
+FROM orderss
+GROUP BY total_amount;
+
+SELECT customer_id, COUNT(*) AS order_count
+FROM orderss
+GROUP BY customer_id
+HAVING COUNT(*) > 0; /* Keep only customers with more than 2 orders */
+
+DELETE FROM orderss
+WHERE id IN (3, 4, 5, 6);
+
+CREATE TABLE productss (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    category VARCHAR(50),
+    price NUMERIC (10,2) NOT NULL
+);
