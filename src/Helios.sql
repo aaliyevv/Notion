@@ -149,3 +149,33 @@ CREATE TABLE paymentss (
     payment_date DATE DEFAULT CURRENT_DATE,
     amount NUMERIC(10,2)
 );
+
+CREATE TABLE complaintss (
+    id SERIAL PRIMARY KEY,
+    customer_id INT REFERENCES customerss(id) ON DELETE CASCADE,
+    complaint_text TEXT NOT NULL,
+    status VARCHAR(20) DEFAULT 'unsolved',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO orderss (customer_id, order_date, total_amount)
+VALUES (1,'2026-01-10', 1500),
+       (2,'2026-01-11', 1800);
+
+DELETE FROM orderss
+WHERE customer_id IN (3, 4);
+
+INSERT INTO productss (name, category, price)
+VALUES ('Iphone', 'Phone', 3000),
+       ('Samsung', 'Phone', 2000);
+
+
+DELETE FROM productss
+WHERE id IN (1, 2);
+
+INSERT INTO order_item (order_id, product_id, quantity, subtotal)
+VALUES (1, 1, 2, 6000),
+       (2, 2, 3, 6000);
+
+DELETE FROM order_item
+WHERE order_id IN (3, 4, 5, 6);
