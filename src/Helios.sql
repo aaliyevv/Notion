@@ -119,3 +119,33 @@ CREATE TABLE productss (
     category VARCHAR(50),
     price NUMERIC (10,2) NOT NULL
 );
+
+SELECT * FROM productss;
+
+SELECT category, productss.name FROM productss WHERE price > 2000;
+
+SELECT customerss.first_name || ' ' || customerss.last_name AS full_name, customerss.phone
+FROM customerss;
+/* concatenation operator */
+
+SELECT * FROM productss WHERE name LIKE '%phone%';
+
+SELECT distinct category FROM productss WHERE category LIKE '%ho%';
+/* returns unique (non-duplicate) category values */
+
+TRUNCATE TABLE productss RESTART IDENTITY CASCADE;
+
+CREATE TABLE order_item (
+    id SERIAL PRIMARY KEY,
+    order_id INT REFERENCES orderss(id) ON DELETE CASCADE,
+    product_id INT REFERENCES productss(id) ON DELETE CASCADE,
+    quantity INT NOT NULL,
+    subtotal NUMERIC(10,2)
+);
+
+CREATE TABLE paymentss (
+    id SERIAL PRIMARY KEY,
+    order_id INT REFERENCES orderss(id) ON DELETE CASCADE,
+    payment_date DATE DEFAULT CURRENT_DATE,
+    amount NUMERIC(10,2)
+);
