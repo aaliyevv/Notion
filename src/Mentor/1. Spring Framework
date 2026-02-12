@@ -7,7 +7,8 @@
 
     - **Repository**
 
-         Connect model with database (extends JPA Repo) in order to service can manage our local database
+         Connect model with database (extends JPA Repo) in order to service can manage our local
+         database
 
     - **Service**
 
@@ -24,3 +25,28 @@
 - **Dependency Injection (DI)**
 
     Model → Repository → Service → Controller
+
+- **Inversion of Control (IoC)**
+
+    Gives control to Spring
+
+- **Dependencies**
+
+    Spring Web, JPA, h2-database, Lombok, Validation
+
+- **RESTful API, API**
+
+    A RESTful API is an API that lets different applications communicate  (request and exchange data)
+    over the internet using URLs and standard HTTP methods (like GET, POST, PUT, DELETE) in a simple
+    and consistent way.
+
+    An API is a messenger that takes a request from one app and gives a response from another app.
+
+- **@PostConstruct & @PreDestroy**
+
+    **@PostConstruct:** Runs once per bean after Spring initializes the bean ****(after dependency
+    injection). Good for setup, logging, or pre-loading data.
+
+    **@PreDestroy:** Runs just before the bean is destroyed (when Spring shuts down). Good for cleanup,
+     saving data, closing resources, or logging. If your app crashes or is killed forcefully, it won’t
+     run.
