@@ -39,7 +39,7 @@ FROM customerss ORDER BY first_name DESC;
 DELETE FROM customerss
 WHERE id IN (5, 6);
 
-TRUNCATE TABLE customerss CASCADE; /* Deletes all rows and dependent raw immediately and resets. */
+TRUNCATE TABLE customerss CASCADE; /* Deletes all rows and dependent raw immediately and resets.*/
 
 TRUNCATE TABLE customerss RESTART IDENTITY CASCADE; /* Deletes all rows and dependent raw
                                                        immediately and resets any SERIAL*/
@@ -179,6 +179,7 @@ VALUES (1, 1, 2, 6000),
 
 DELETE FROM order_item
 WHERE order_id IN (3, 4, 5, 6);
+
 INSERT INTO paymentss (order_id, payment_date, amount)
 VALUES (1, '2025-12-5', 6000),
        (2, '2025-12-24', 6000);
@@ -195,3 +196,27 @@ JOIN orderss o on c.id=customer_id;
 
 SELECT first_name, last_name, o.total_amount, o.order_date FROM customerss c
 LEFT JOIN orderss o on c.id=customer_id;
+
+SELECT o.id, o.customer_id, o.order_date, o.total_amount, c.last_name, c.first_name
+FROM customerss c
+RIGHT JOIN orderss o on c.id=customer_id;
+
+SELECT * FROM orderss o
+FULL JOIN customerss c on c.id = o.customer_id;
+
+
+SELECT * FROM customerss
+INNER JOIN orderss o on customerss.id = o.customer_id
+INNER JOIN paymentss p on o.id = p.order_id;
+
+
+SELECT * FROM customerss c
+WHERE EXISTS(
+    SELECT 1 FROM orderss o
+    WHERE c.id=o.customer_id
+); /* EXISTS only checks whether a row exists, so the value selected inside it
+      doesn’t affect the result. */
+
+
+DELETE FROM courses WHERE id=1;
+
