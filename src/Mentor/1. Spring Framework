@@ -1,0 +1,26 @@
+# **Spring Framework**
+
+- **Packets**
+    - **Model**
+
+        Our local database
+
+    - **Repository**
+
+         Connect model with database (extends JPA Repo) in order to service can manage our local database
+
+    - **Service**
+
+        Via repository, write our business logic with entity to database
+
+    - **Controller**
+
+         Is a User Interface (UI) to show data which wrote to database with service’s business logic
+
+    - **build.gradle**
+
+        Inside dependencies
+
+- **Dependency Injection (DI)**
+
+    Model → Repository → Service → Controller
