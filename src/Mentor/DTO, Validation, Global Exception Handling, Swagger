@@ -21,10 +21,41 @@
 
 - **Global Exception Handling**
 
-    Handling errors that occur in the application from a single center and return a neat JSON response to the user. Instead of writing`try-catch` blocks in every controller method.
+    Handling errors that occur in the application from a single center and return a neat JSON response to
+    the user. Instead of writing`try-catch` blocks in every controller method.
 
-    - **@RestControllerAdvice:** A class that "listens" for errors throughout the application. (global error handler)
-    - **@ExceptionHandler:** Specifies what type of error this method will catch. Determines how to handle which errors.
+    - **@RestControllerAdvice:** A class that "listens" for errors throughout the application. (global
+    error handler)
+    - **@ExceptionHandler:** Specifies what type of error this method will catch. Determines how to
+    handle which errors.
     - Example:
 
         ![image.png](attachment:c65f26b2-a2af-4ef0-8cdf-5a7462acf74e:image.png)
+
+
+- **API Documentation (Swagger/OpenAPI)**
+
+    Like a Postman but more comfortable for developers with sending request assisting with templates.
+
+    Swagger/OpenAPI is a tool that clearly explains how to “talk” to an API so developers can send
+    requests and get the right responses.
+
+    it will automatically scan your `@RestController` and `@RequestMapping` annotations and generate
+    documentation.
+
+    - Accessing **Swagger UI**
+
+        - After launching your application, visit the following URL:
+
+            `http://localhost:8080/swagger-ui/index.html`
+
+
+        You'll see all your endpoints, the parameters they accept (including DTOs), the responses they
+        return, and even an interface for testing your API directly from the browser.
+
+    - Addition: Enriching Documentation
+
+        You can use annotations like `@Operation` and `@ApiResponse` to make your documentation more
+        detailed.
+
+        
