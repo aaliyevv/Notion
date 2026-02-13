@@ -58,4 +58,18 @@
         You can use annotations like `@Operation` and `@ApiResponse` to make your documentation more
         detailed.
 
-        
+        - Basic Annotations
+
+            - `@Tag` (name, description): Specifies the name and group of the Controller.
+            - `@Operation` (summary): Describes what the method (Endpoint) does.
+            - `@ApiResponse`(responseCode, description): Describes the meaning of successful or error
+            responses.
+
+        - Example:
+
+            ![image.png](attachment:6a75645e-6c81-4c38-9c99-808d8abed283:image.png)
+
+- Conclusion
+
+      When `Validation` rules are violated, your  `Error Handler` will catch this and the user will be
+      informed via the `Swagger UI` about exactly which field is invalid and why.
