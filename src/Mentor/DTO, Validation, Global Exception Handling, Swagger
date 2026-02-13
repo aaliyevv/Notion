@@ -1,0 +1,30 @@
+# DTO, Validation, **Global Exception Handling,** Swagger
+
+- **DTO (Data Transfer Object)**
+
+    - **DTOs** are simple Java objects with no database connection.
+    - **Entity** works directly with the database.
+    - **DTO** represents the data we send/receive via API.  DTO only includes allowed fields,
+    so unsafe data cannot go to the database.
+
+    - Why do we validate in DTO, not Entity?
+
+        - If we put validation in Entity, it does two jobs: business model + request model.
+        - Validation rules may change, but database structure is usually stable.
+        - With DTO, you only change the DTO, keeping Entity safe.
+
+- **Validation**
+
+    Checks that incoming data is correct before saving. Add `@Valid` in the controller before
+    `@Request Body`. For instance: `@NotBlank`, `@Size`, `@Email`, `@Pattern`, `@DecimalMin`.
+
+
+- **Global Exception Handling**
+
+    Handling errors that occur in the application from a single center and return a neat JSON response to the user. Instead of writing`try-catch` blocks in every controller method.
+
+    - **@RestControllerAdvice:** A class that "listens" for errors throughout the application. (global error handler)
+    - **@ExceptionHandler:** Specifies what type of error this method will catch. Determines how to handle which errors.
+    - Example:
+
+        ![image.png](attachment:c65f26b2-a2af-4ef0-8cdf-5a7462acf74e:image.png)
