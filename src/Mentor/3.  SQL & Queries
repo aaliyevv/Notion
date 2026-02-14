@@ -1,0 +1,26 @@
+# SQL & Queries
+
+- **PostgreSQL**
+
+    as the database, and our backend application connects to it to store and retrieve data.
+
+- **DDL, DML**
+
+    Data Definition Language defines or changes the database structure (tables, columns).
+
+    **Data Manipulation Language** works with the data inside those structures (insert, update, delete).
+
+- **Serial, Primary key (PK), Foreign Key (FK)**
+
+    `id SERIAL PRIMARY KEY *- /** auto-incrementing integer */`
+
+    **`PRIMARY KEY`-** Unique identifier for each row, can not be `NULL`
+
+    **`Foreign KEY` -** A field in one table that uniquely identifies a row of another table.
+
+- **`SELECT`, `FROM`, `WHERE`**
+    - Purpose: To filter records based on a condition.
+    - Syntax: `SELECT column1, column2 FROM TableName WHERE condition;` `(filtering)`
+    - Example: `SELECT FirstName, LastName FROM Employees WHERE DepartmentID = 101;`
+
+    `SELECT category, productss.name FROM productss WHERE price > 2000;`
