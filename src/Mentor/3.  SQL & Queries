@@ -24,3 +24,39 @@
     - Example: `SELECT FirstName, LastName FROM Employees WHERE DepartmentID = 101;`
 
     `SELECT category, productss.name FROM productss WHERE price > 2000;`
+
+- **Logical operators: AND, OR, NOT**
+
+    ![image.png](attachment:03020bd6-6822-423d-abe6-c7c76760518c:image.png)
+
+- **AS, LIKE**
+
+    Alias: `SELECT customerss.first_name || ' ' || customerss.last_name AS full_name, customerss.phone
+    FROM customerss; /* concatenation operator, AS (alias (nickname)) */`
+
+    ![image.png](attachment:dd704554-6896-4a28-ad38-6a197f44020f:image.png)
+
+    ![image.png](attachment:57590e3c-ee13-48f3-9b9a-300c042b8df2:image.png)
+
+- **Distinct, Cascade, Truncate**
+
+    DISTINCT - removes duplicate values returns unique (non-duplicate) category values.
+
+    CASCADE →An operation on a parent entity (like save or delete) automatically applies to its related
+    child entities (dependent).
+
+    TRUNCATE → Deletes all rows immediately and resets any `SERIAL` but keep table
+
+    - Example:
+
+        `SELECT DISTINCT category FROM productss WHERE category LIKE '%ho%';`
+
+        `customer_id INT NOT NULL REFERENCES customerss(id) ON DELETE CASCADE,`
+
+        `REFERENCES customers(id)` → foreign key
+
+        `ON DELETE CASCADE` → automatically delete dependent rows when parent row is deleted
+
+        TRUNCATE TABLE order_item;
+
+        - Addition:
