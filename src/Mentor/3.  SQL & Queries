@@ -60,3 +60,35 @@
         TRUNCATE TABLE order_item;
 
         - Addition:
+
+            `TRUNCATE TABLE customerss CASCADE; /* Deletes all rows and dependent raw immediately. */`
+
+            `TRUNCATE TABLE customerss RESTART IDENTITY CASCADE; /* Deletes all rows and dependent raw
+            immediately and resets any SERIAL*/`
+
+- **Current_date, Timestamps**
+
+    `DEFAULT CURRENT_DATE` → automatically fills today’s date if you don’t specify it
+
+    `DEFAULT CURRENT_TIMESTAMP` → automatically fills today’s date and time  if you don’t specify it.
+
+- **Alter, Update (case)**
+
+    `ALTER TABLE customerss ADD COLUMN age INT DEFAULT 18;`
+    `ALTER TABLE customerss DROP COLUMN age;`
+
+    Update : `UPDATE customerss SET email='aaliyev@example.com' WHERE id=1;`
+
+    - Case example:
+
+        ![image.png](attachment:34ba4092-b3b0-4ace-bce0-105607c85070:image.png)
+
+- **Drop, Delete**
+
+    DROP TABLE - removes table and its data, DELETE FROM- removes rows
+
+    - **`ORDER BY`**
+
+        * Purpose: To sort the result set.
+        * Syntax: `SELECT column1, column2 FROM TableName ORDER BY column1 [ASC|DESC];`
+        * Example: `SELECT FirstName, LastName FROM Employees ORDER BY LastName ASC A->Z);`
