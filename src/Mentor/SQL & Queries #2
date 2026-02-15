@@ -1,0 +1,25 @@
+# SQL & Queries #2
+
+- **INNER JOIN**
+
+    Returns records that have matching values in *both* tables. If there's no match, the record is excluded.
+
+    `SELECT c.first_name, c.last_name, o.total_amount  FROM customerss c`
+
+    `JOIN orderss o on c.id=customer_id;`
+
+- **LEFT JOIN**
+    
+    Returns all records from the *left* table (Table1) and the matched records from the *right* table
+    (Table2). If there's no match in the right table, NULLs are returned for columns from the right table.
+
+    `SELECT first_name, last_name, o.total_amount, o.order_date FROM customerss c LEFT JOIN orderss o on
+    c.id=customer_id;`
+
+- **RIGHT JOIN**
+
+    Returns all records from the *right* table (Table2) and the matched records from the *left* table
+     (Table1). If there's no match in the left table, NULLs are returned for columns from the left table.
+
+    `SELECT o.id, o.customer_id, o.order_date, o.total_amount, c.last_name, c.first_name FROM customerss
+    c RIGHT JOIN orderss o on c.id=customer_id;`
