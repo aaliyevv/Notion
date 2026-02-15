@@ -9,7 +9,7 @@
     `JOIN orderss o on c.id=customer_id;`
 
 - **LEFT JOIN**
-    
+
     Returns all records from the *left* table (Table1) and the matched records from the *right* table
     (Table2). If there's no match in the right table, NULLs are returned for columns from the right table.
 
@@ -23,3 +23,30 @@
 
     `SELECT o.id, o.customer_id, o.order_date, o.total_amount, c.last_name, c.first_name FROM customerss
     c RIGHT JOIN orderss o on c.id=customer_id;`
+
+- **FULL OUTER JOIN**
+
+    Returns all records when there is a match in *either* the left or right table. It essentially combines
+     the results of a LEFT JOIN and a RIGHT JOIN. If there's no match, NULLs are returned for columns from
+      the table without a match.
+
+    `SELECT * FROM orderss o FULL JOIN customerss c on c.id = o.customer_id;`
+
+- **SELF JOIN**
+
+    To join a table to itself.
+
+    When a table has a self-referential relationship (e.g. `Employees.ManagerID` refers to another
+    `Employees.EmployeeID` in the table). Aliases are mandatory.
+
+- **Joining Multiple Tables**
+
+    You can join more than two tables by adding more `JOIN` clauses.
+
+    - **Example:**
+
+        Suppose you have customerss table with id and orderss table with customer_id (FK) and paymentss
+        table with order_id.
+
+        `SELECT * FROM customerss INNER JOIN orderss o on customerss.id = o.customer_id INNER JOIN
+        paymentss p on o.id = p.order_id`
