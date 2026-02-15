@@ -87,8 +87,41 @@
 
     DROP TABLE - removes table and its data, DELETE FROM- removes rows
 
-    - **`ORDER BY`**
+- **`ORDER BY`**
 
         * Purpose: To sort the result set.
         * Syntax: `SELECT column1, column2 FROM TableName ORDER BY column1 [ASC|DESC];`
         * Example: `SELECT FirstName, LastName FROM Employees ORDER BY LastName ASC A->Z);`
+
+- **Aggregate Functions, `GROUP BY, Having`**
+
+    This query groups rows by a column and applies an aggregate function to each group:
+
+    * Purpose: To perform calculations on groups of rows.
+    * Syntax: `SELECT column_group, AGGREGATE_FUNCTION(column_value) FROM TableName GROUP BY column_group;`
+    * Example: `SELECT DepartmentID, COUNT(EmployeeID) AS NumberOfEmployees FROM Employees GROUP BY
+    DepartmentID;`
+
+    - Aggregate Functions
+
+        ![image.png](attachment:4e468e37-ac0b-4aa3-8e3f-653af422eb62:image.png)
+
+        Instead of COUNT we can write SUM(department_id)
+
+    - **HAVING** filters grouped results after `GROUP BY`
+
+        `SELECT customer_id, COUNT(*) AS order_count FROM orderss`
+
+        `GROUP BY customer_id HAVING COUNT(*) > 0;`  `/* Keep only customers with more than 2 orders */`
+
+- Subquery
+
+    Inner query uses a value from the outer query to check if related rows exist.
+
+    ![image.png](attachment:9c437595-69eb-4ba3-ac0b-759c96ae8cd0:image.png)
+
+- Examples & Notes
+
+    ![image.png](attachment:e3548fce-9295-4902-8fe8-c26473a02871:image.png)
+
+    `UNIQUE` value can not be repeated.
