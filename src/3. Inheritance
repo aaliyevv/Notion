@@ -1,0 +1,29 @@
+# #3 **`*I`nheritance***
+
+- Inheritance, final and super.
+    - Inheritance
+
+        Code reuse, is a mechanism that allows a new class to be defined based on an existing class,
+        inheriting its attributes and methods. This allows for code reuse and can make development more
+        efficient. Like Dog inherits from Animal and overrides speak(). This avoids code duplication.
+
+
+    Public class child extends Parent {}
+
+    ![image.png](attachment:b0ccc636-c3dd-43d6-a566-6b38f584bd4f:image.png)
+
+    When we update the method which we get from parent class we must write  @Overrride.
+
+    If the method in parent class is not changeable we must write “final” before this method(cannot be
+    overridden, extended).
+
+    If we refer to fields, methods, constructor of parent we use super.fieldName, if we  need to get child
+    (I mean own) field we use this.fieldName.
+
+- Abstract
+
+    Abstract class means we mention it in parent class (without return type) but we use it for child
+    class(with return type). In child class if we need to call abstract method: take the arrow above the
+    child class, click more action > implement method. Inside abstract class we can use both abstract  and
+    normal field.
+
