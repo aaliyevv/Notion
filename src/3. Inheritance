@@ -27,3 +27,31 @@
     child class, click more action > implement method. Inside abstract class we can use both abstract  and
     normal field.
 
+    - Abstraction
+
+        is the ability to focus on an object's essential features while ignoring non-essential details.
+        It allows for the creation of classes that aren't tied to specific implementations, making it
+        possible to work with objects without knowing their implementation details.
+
+        Abstraction means defining a blueprint without providing full details. For example, the abstract
+         class Shape forces subclasses like Circle to implement the area() method. This ensures consistency
+          in design.
+
+    - Example from real life
+
+        the process of making coffee, you use a coffee maker, you follow a simplified process: add water
+         and coffee grounds, and press the “on” button.
+
+    - Example of code
+
+        ![image.png](attachment:3c168f01-e182-49b7-bed3-b9e63488d12f:image.png)
+
+- Interface
+
+    Interface means child use only methods of parent class, not the fields. These methods the same
+    structure wtih the abstract methods(it means without return type). Inhertance’de extend, Interface’de
+    implements’den istifade olunur.
+
+    ![image.png](attachment:f26b9b15-088c-492e-962a-3b4420fad4bf:image.png)
+
+    There is no other inheritance, nevertheless there can be multiple interface.
